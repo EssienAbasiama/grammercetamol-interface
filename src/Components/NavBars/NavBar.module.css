@@ -1,0 +1,28 @@
+.navbar {
+  background-color: rgba(51, 111, 128, 0.344);
+  color: yellow;
+  width: 100%;
+  display: flex;
+  min-height: 5em;
+}
+.logo {
+  min-width: 30%;
+  margin: auto;
+  text-align: center;
+}
+.and {
+  min-width: 30%;
+  margin: auto;
+  text-align: center;
+}
+.navigator {
+  min-width: 40%;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  list-style: none;
+}
+
+.navigator li {
+  margin: 0.2em;
+}

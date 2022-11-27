@@ -1,0 +1,46 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+  font-size: xx-large;
+  font-style: italic;
+}
+
+.RegistrationFormBodyHeader {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.RegistrationFormBody {
+  background-color: antiquewhite;
+  height: 100vh;
+  text-align: center;
+  width: 100vw;
+}
+
+.RegistrationLabels {
+  margin-bottom: 0.5rem;
+}
+
+.RegistrationLabels label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.RegistrationLabels input {
+  border-radius: 3px;
+  padding: 0.8rem;
+  width: 35%;
+}
+
+/* @media (max-width: 250px) {
+  .RegistrationFormBody{
+    min-width: 100v;
+  }
+} */

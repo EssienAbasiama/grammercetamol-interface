@@ -1,0 +1,29 @@
+.LoginForm .LoginFormBody .username_password label {
+  display: block;
+  width: 100%;
+}
+.LoginForm .LoginFormBody .username_password input {
+  min-width: 20rem;
+  height: 1.5rem;
+}
+
+.LoginForm {
+  text-align: center;
+  min-height: 100vh;
+  background-color: rgba(180, 140, 140, 0.239);
+  min-width: 100vw;
+}
+
+.LoginFormBody {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.LoginForm .LoginFormBody .username_password.inValid label {
+  color: red;
+}
+
+.LoginForm .LoginFormBody .username_password.inValid input {
+  border-color: red;
+  background: rgb(233, 147, 147);
+}
