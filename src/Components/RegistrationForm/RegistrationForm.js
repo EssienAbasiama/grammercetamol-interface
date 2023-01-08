@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import "./RegistrationForm.css";
+import React, { useState, useEffect } from "react";
+import styles from "./RegistrationForm.module.css";
 
-const RegistrationForm = () => {
+const RegistrationForm = (props) => {
   const [details, setDetails] = useState({
     firstname: "",
     lastname: "",
@@ -9,6 +9,14 @@ const RegistrationForm = () => {
     username: "",
     password: "",
     dob: "",
+  });
+
+  useState({
+    firstname: null,
+    lastname: null,
+    othername: null,
+    username: null,
+    password: null,
   });
 
   const changeHandler = (setDetails, newKey) => {
@@ -31,20 +39,24 @@ const RegistrationForm = () => {
       password: "",
       dob: "",
     });
+
+    // props.onLogin()
   };
 
   return (
     <>
-      <div className="RegistrationFormBody">
-        <div className="RegistrationBody">
-          <h3 className="RegistrationFormBodyHeader">Registration Form</h3>
+      <div className={styles.RegistrationFormBody}>
+        <div className={styles.RegistrationBody}>
+          <h3 className={styles.RegistrationFormBodyHeader}>
+            Registration Form
+          </h3>
           <form
             onSubmit={(event) => {
               submitHandler(event);
             }}
           >
             <div>
-              <div className="RegistrationLabels">
+              <div className={styles.RegistrationLabels}>
                 <label>Firstname</label>
                 <input
                   required={true}
@@ -57,7 +69,7 @@ const RegistrationForm = () => {
                   }}
                 />
               </div>
-              <div className="RegistrationLabels">
+              <div className={styles.RegistrationLabels}>
                 <label>Lastname</label>
                 <input
                   required={true}
@@ -71,7 +83,7 @@ const RegistrationForm = () => {
                   }}
                 />
               </div>
-              <div className="RegistrationLabels">
+              <div className={styles.RegistrationLabels}>
                 <label>Othername</label>
                 <input
                   required={true}
@@ -84,7 +96,7 @@ const RegistrationForm = () => {
                   }}
                 />
               </div>
-              <div className="RegistrationLabels">
+              <div className={styles.RegistrationLabels}>
                 <label>Username</label>
                 <input
                   required={true}
@@ -97,7 +109,7 @@ const RegistrationForm = () => {
                   }}
                 />
               </div>
-              <div className="RegistrationLabels">
+              <div className={styles.RegistrationLabels}>
                 <label>Password</label>
                 <input
                   required={true}
@@ -110,7 +122,7 @@ const RegistrationForm = () => {
                   }}
                 />
               </div>
-              <div className="RegistrationLabels">
+              <div className={styles.RegistrationLabels}>
                 <label>Date_of_Birth</label>
                 <input
                   required={true}

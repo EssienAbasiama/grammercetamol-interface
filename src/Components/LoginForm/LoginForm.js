@@ -1,67 +1,104 @@
-import React, { useState, useRef } from "react";
-import styles from "./LoginForm.module.css";
+import React, { useState, useEffect } from "react";
+import styles from "./Login.module.css";
+import Card from "../UI/Card/Card";
+import Button from "../UI/Button/Button";
 
-const LoginForm = () => {
-  const usernameuseRef = useRef();
-  const passworduseRef = useRef();
+const Login = (props) => {
+  const [loginInfo, setLoginInfo] = useState({
+    email: "",
+    password: "",
+  });
 
-  const [isValid, setIsValid] = useState(true);
+  const [valid, setValid] = useState({
+    email: null,
+    password: null,
+  });
 
-  const onChangeUsername = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setIsValid(true);
-    }
+  const [formValid, setFormValid] = useState(false);
+
+  useEffect(() => {
+    const identifier = setTimeout(() => {
+      console.log("okay we are doing good");
+      setFormValid(
+        loginInfo.email.includes("@") && loginInfo.password.trim().length > 7
+      );
+    }, 9000);
+    return () => {
+      console.log("successful");
+      clearTimeout(identifier);
+    };
+  }, [loginInfo.email, loginInfo.password, formValid]);
+
+  const onChangeHander = (setLoginInfo, newKey) => {
+    setLoginInfo((preState) => ({
+      ...preState,
+      ...newKey,
+    }));
+  };
+
+  const validate = (setState, conditions) => {
+    setState((preState) => ({
+      ...preState,
+      ...conditions,
+    }));
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-
-    const username = usernameuseRef.current.value;
-    const password = passworduseRef.current.value;
-
-    if (username.trim().length === 0 || password.trim().length === 0) {
-      setIsValid(false);
-      return;
-    }
-    setIsValid(true);
-    usernameuseRef.current.value = "";
-    passworduseRef.current.value = "";
+    props.onLoggin(loginInfo.email, loginInfo.password);
   };
 
   return (
-    <>
-      <div className={`${styles.LoginForm}`}>
-        <div className={`${styles.LoginFormBody}`}>
-          <form onSubmit={submitHandler}>
-            <div
-              className={`${styles.username_password} ${
-                !isValid && styles.inValid
-              }`}
-            >
-              <div className="username">
-                <label>username</label>
-                <input
-                  type="text"
-                  ref={usernameuseRef}
-                  onChange={onChangeUsername}
-                />
-              </div>
-              <div className="password">
-                <label>password</label>
-                <input type="password" ref={passworduseRef} />
-              </div>
-            </div>
-            <div className="submitButton">
-              <button type="submit">Login</button>
-            </div>
-          </form>
-          <p>
-            Don't have an account? <button>Signup</button>
-          </p>
+    <Card className={styles.login}>
+      <form onSubmit={submitHandler}>
+        <div
+          className={`${styles.control} ${
+            valid.email === false ? styles.invalid : ""
+          }`}
+        >
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            value={loginInfo.email}
+            onChange={(event) => {
+              onChangeHander(setLoginInfo, { email: event.target.value });
+            }}
+            onBlur={() => {
+              validate(setValid, {
+                email: loginInfo.email.includes("@"),
+              });
+            }}
+          />
         </div>
-      </div>
-    </>
+        <div
+          className={`${styles.control} ${
+            valid.password === false ? styles.invalid : ""
+          }`}
+        >
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            value={loginInfo.password}
+            onChange={(event) => {
+              onChangeHander(setLoginInfo, { password: event.target.value });
+            }}
+            onBlur={() => {
+              validate(setValid, {
+                password: loginInfo.password.trim().length > 7,
+              });
+            }}
+          />
+        </div>
+        <div className={styles.actions}>
+          <Button type="submit" className={styles.btn} disabled={!formValid}>
+            Login
+          </Button>
+        </div>
+      </form>
+    </Card>
   );
 };
 
-export default LoginForm;
+export default Login;

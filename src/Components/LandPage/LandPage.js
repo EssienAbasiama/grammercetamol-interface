@@ -1,10 +1,7 @@
 import React from "react";
-import NavBar from "../NavBars/NavBars";
-
-const LandPage = () => {
+const LandPage = (props) => {
   return (
     <>
-      <NavBar />
       <h1>How are you doing?</h1>
     </>
   );
