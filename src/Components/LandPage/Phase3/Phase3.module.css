@@ -1,0 +1,43 @@
+.other_courses {
+  color: rgb(255, 255, 255);
+  max-width: 100%;
+}
+
+.other_courses_title {
+  width: 100vw;
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+.other_courses_title h2 {
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+.other_courses_contents {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.other_courses_contents_ {
+  flex-basis: 20vw;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+/* .other_courses_contents_img {
+
+} */
+.other_courses_contents_img img {
+  object-fit: contain;
+}
+
+.other_courses_contents_details p {
+  margin: 0;
+}
