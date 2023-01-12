@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Button from "../UI/Button/Button";
 import styles from "./RegistrationForm.module.css";
 
 const RegistrationForm = (props) => {
@@ -136,9 +137,9 @@ const RegistrationForm = (props) => {
                 />
               </div>
             </div>
-            <div className="submitButton">
-              <button type="submit">Submit</button>
-            </div>
+            <Button type="submit" className={styles.submitButton}>
+              Submit
+            </Button>
           </form>
         </div>
       </div>

@@ -26,14 +26,9 @@
 }
 
 .other_courses_contents_ {
-  flex-basis: 20vw;
-  flex-grow: 1;
-  flex-shrink: 1;
+  flex: 0 1 20vw;
 }
 
-/* .other_courses_contents_img {
-
-} */
 .other_courses_contents_img img {
   object-fit: contain;
 }

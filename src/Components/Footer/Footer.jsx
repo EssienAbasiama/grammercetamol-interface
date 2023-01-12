@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import style from "./Footer.module.css";
 import { FaWhatsapp, FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";
 import Card from "../UI/Card/Card";
+import Button from "../UI/Button/Button";
 
 const google = "www.google.com;";
 const Footer = (props) => {
@@ -50,13 +51,14 @@ const Footer = (props) => {
             </div>
           </div>
         </div>
-        <div className={`${style.contacts} ${style.hide}`}>
+
+        <div className={`${style.footer3} ${style.hide}`}>
           <div className={style.d2}>
             <h2>Explore</h2>
-            <li>home</li>
-            <li>about us</li>
-            <li>meet our tutor</li>
-            <li>contact us</li>
+            <a href="http://">home</a>
+            <a href="http://">about us</a>
+            <a href="http://">meet our tutor</a>
+            <a href="http://">contact us</a>
           </div>
         </div>
         <Card className={style.footer3}>
@@ -70,23 +72,10 @@ const Footer = (props) => {
                 <label htmlFor="email">Email</label>
                 <input type="email" id="email" ref={emailRef} />
               </div>
+              <Button>sign me up</Button>
             </form>
           </div>
         </Card>
-        {/* <div className={style.footer3}>
-          <div className={style.d3}>
-            <div className={style.community}>
-              <h2>join our community</h2>
-            </div>
-            <p>Be the first to know about new lessons and post</p>
-            <form onSubmit={addMail}>
-              <div className={style.form}>
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" ref={emailRef} />
-              </div>
-            </form>
-          </div>
-        </div> */}
       </section>
     </>
   );
