@@ -6,6 +6,10 @@ import NavBar from "../NavBars/NavBar";
 import Phase3 from "./Phase3/Phase3";
 import Footer from "../Footer/Footer";
 const LandPage = (props) => {
+  const present = (email) => {
+    console.log(email);
+  };
+
   return (
     <>
       <div className={styles.LandPage}>
@@ -16,7 +20,7 @@ const LandPage = (props) => {
           <Phase3 other_courses={props.phase3} />
         </div>
         <div className={styles.landFooter}>
-          <Footer logo={props.footerLogo} />
+          <Footer logo={props.footerLogo} submit={present} />
         </div>
       </div>
     </>

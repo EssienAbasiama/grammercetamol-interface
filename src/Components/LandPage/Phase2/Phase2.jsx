@@ -11,8 +11,8 @@ const Phase2 = (props) => {
         </div>
         <div className={style.course_contents}>
           {props.courses.map((course) => (
-            <div className={style.course_contents_}>
-              <div key={course.id} className={style.course_image}>
+            <div key={course.id} className={style.course_contents_}>
+              <div className={style.course_image}>
                 <img src={course.images} alt="" />
               </div>
               <div className={style.course_entails}>

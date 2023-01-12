@@ -11,13 +11,13 @@ const RegistrationForm = (props) => {
     dob: "",
   });
 
-  useState({
-    firstname: null,
-    lastname: null,
-    othername: null,
-    username: null,
-    password: null,
-  });
+  // useState({
+  //   firstname: null,
+  //   lastname: null,
+  //   othername: null,
+  //   username: null,
+  //   password: null,
+  // });
 
   const changeHandler = (setDetails, newKey) => {
     setDetails((preState) => {

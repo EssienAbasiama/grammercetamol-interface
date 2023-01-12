@@ -4,28 +4,33 @@ li {
 
 .footerall {
   max-width: 100%;
-  height: 35vh;
+  /* height: 40vh; */
   padding: 2%;
   display: flex;
   color: white;
+  line-height: 1.4rem;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  align-items: center;
 }
 
-.footerflex {
-  height: inherit;
-}
+/* .footerflex {
+  /* height: inherit; */
+/* } */
 
 .footer3 {
-  flex-basis: 100vw;
-  /* background-color: yellow; */
+  /* height: 100%; */
+  /* background-color: yellowgreen; */
+  width: 33.33%;
 }
 
 .d1 {
-  /* background-color: black; */
+  height: inherit;
   margin-top: 6%;
+  /* width: 50%; */
 }
 .footerlogo {
   width: auto;
-  background-color: white;
   margin-bottom: 2%;
 }
 
@@ -39,9 +44,16 @@ li {
 }
 
 .d2 {
-  /* background-color: white; */
-  margin-top: 8%;
-  padding: 2% 5% 0 7%;
+  margin-top: 6%;
+  /* padding: 2% 5% 0 7%; */
+}
+
+.d2 h2 {
+  margin-bottom: 1%;
+}
+
+.d2 li {
+  margin-bottom: 20px;
 }
 
 .contacts {
@@ -50,7 +62,64 @@ li {
 
 .contacts_icons {
   font-size: 2rem;
-  /* inline-size: 50px; */
   display: flex;
-  gap: 20px;
+  gap: 5%;
+}
+.contacts_icons a {
+  color: inherit;
+}
+
+.d3 {
+  background: rgba(255, 255, 255, 0.26);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding-top: 3%;
+  text-align: center;
+}
+
+.community {
+  text-align: center;
+  background-color: black;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+.form label,
+.form input {
+  display: block;
+}
+
+.form label {
+  font-weight: bold;
+  flex: 1;
+  margin-bottom: 0.5rem;
+  color: blue;
+}
+
+.form input {
+  flex: 2;
+  width: 50%;
+  font: inherit;
+  margin: auto;
+  border-radius: 6px;
+  border: 1px solid rgb(223, 65, 65);
+}
+
+@media screen and (max-width: 650px) {
+  .footerall {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .hide {
+    display: none;
+  }
+  .footer3 {
+    width: 100%;
+  }
 }

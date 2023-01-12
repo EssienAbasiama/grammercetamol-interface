@@ -5,6 +5,7 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  min-height: initial;
 }
 .LandPage_components {
   padding: 0 2% 2% 2%;
