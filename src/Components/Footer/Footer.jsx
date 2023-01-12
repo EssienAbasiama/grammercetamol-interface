@@ -4,7 +4,7 @@ import { FaWhatsapp, FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 
-const google = "www.google.com;";
+const google = "https://www.google.com";
 const Footer = (props) => {
   const emailRef = useRef();
 
@@ -55,10 +55,10 @@ const Footer = (props) => {
         <div className={`${style.footer3} ${style.hide}`}>
           <div className={style.d2}>
             <h2>Explore</h2>
-            <a href="http://">home</a>
-            <a href="http://">about us</a>
-            <a href="http://">meet our tutor</a>
-            <a href="http://">contact us</a>
+            <a href={google}>home</a>
+            <a href={google}>about us</a>
+            <a href={google}>meet our tutor</a>
+            <a href={google}>contact us</a>
           </div>
         </div>
         <Card className={style.footer3}>
