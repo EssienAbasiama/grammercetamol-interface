@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useReducer, useRef } from "react";
 import Button from "../UI/Button/Button";
+import Input from "../UI/Input/Input";
 import styles from "./RegistrationForm.module.css";
 
 const RegistrationForm = (props) => {
@@ -11,6 +12,7 @@ const RegistrationForm = (props) => {
     password: "",
     dob: "",
   });
+  const inputRef = useRef();
 
   // useState({
   //   firstname: null,
@@ -57,6 +59,7 @@ const RegistrationForm = (props) => {
             }}
           >
             <div>
+              <Input ref={inputRef} id="name" label="Name" type="name" />
               <div className={styles.RegistrationLabels}>
                 <label>Firstname</label>
                 <input

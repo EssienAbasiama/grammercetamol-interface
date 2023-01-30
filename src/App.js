@@ -15,6 +15,7 @@ import {
   Logo,
   Smile,
 } from "./Components/UI/constants";
+import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
 
 // import images
 
@@ -76,15 +77,11 @@ function App() {
     console.log(email, password);
   };
 
-  // const logoutHandler = () => {
-  //   localStorage.removeItem("isLoggedIn");
-  //   setIsLoggedIn(false);
-  // };
-
   return (
     <>
       <div className={style.all}>
-        {!isLoggedIn && <LoginForm onLoggin={loginHandler} />}
+        <RegistrationForm />
+        {/* {!isLoggedIn && <LoginForm onLoggin={loginHandler} />}
         {isLoggedIn && (
           <LandPage
             phase1={Microphone}
@@ -92,7 +89,7 @@ function App() {
             phase3={phase3}
             footerLogo={Logo}
           />
-        )}
+        )} */}
       </div>
     </>
   );
