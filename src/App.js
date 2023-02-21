@@ -1,3 +1,5 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import React, { useState, useEffect } from "react";
 import LandPage from "./Components/LandPage/LandPage";
 import LoginForm from "./Components/LoginForm/Login";
@@ -68,6 +70,7 @@ function App() {
     const storedUserLoggedInformation = localStorage.getItem("isLoggedIn");
     if (storedUserLoggedInformation === "1") {
       setIsLoggedIn(true);
+    } else {
     }
   }, []);
 
@@ -79,20 +82,43 @@ function App() {
 
   return (
     <>
-      <div className={style.all}>
-        <RegistrationForm />
-        {/* {!isLoggedIn && <LoginForm onLoggin={loginHandler} />}
-        {isLoggedIn && (
-          <LandPage
-            phase1={Microphone}
-            phase2={phase2}
-            phase3={phase3}
-            footerLogo={Logo}
+      <Router>
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <LandPage
+                phase1={Microphone}
+                phase2={phase2}
+                phase3={phase3}
+                footerLogo={Logo}
+              />
+            }
           />
-        )} */}
-      </div>
+          <Route exact path="/register" element={<RegistrationForm />} />
+          <Route exact path="/login" element={<LoginForm />} />
+        </Routes>
+      </Router>
     </>
   );
+
+  // return (
+  //   <>
+  //     <div className={style.all}>
+  //       <RegistrationForm />
+  //       {!isLoggedIn && <LoginForm onLoggin={loginHandler} />}
+  //       {isLoggedIn && (
+  //         <LandPage
+  //           phase1={Microphone}
+  //           phase2={phase2}
+  //           phase3={phase3}
+  //           footerLogo={Logo}
+  //         />
+  //       )}
+  //     </div>
+  //   </>
+  // );
 }
 
 export default App;

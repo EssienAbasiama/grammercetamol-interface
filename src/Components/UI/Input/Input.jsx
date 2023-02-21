@@ -1,13 +1,13 @@
 import { useRef, useImperativeHandle, forwardRef } from "react";
 
-import styles from "./Input.module.css";
+import styles from "./LoginInput.module.css";
 
 const handle = (activate) => {
   return {
     focus: activate,
   };
 };
-const Input = forwardRef((props, ref) => {
+export const Input = forwardRef((props, ref) => {
   const inputRef = useRef();
 
   const activate = () => {
@@ -15,11 +15,6 @@ const Input = forwardRef((props, ref) => {
   };
 
   useImperativeHandle(ref, () => handle(activate));
-  //   useImperativeHandle(ref, () => {
-  //     return {
-  //       focus: activate,
-  //     };
-  //   });
 
   return (
     <>
@@ -27,15 +22,14 @@ const Input = forwardRef((props, ref) => {
         <label htmlFor={props.id}>{props.label}</label>
         <input
           ref={inputRef}
+          name={props.name}
           id={props.id}
           type={props.type}
           value={props.value}
           onChange={props.onChange}
-          onBlur={props.onChange}
+          onBlur={props.onBlur}
         />
       </div>
     </>
   );
 });
-
-export default Input;

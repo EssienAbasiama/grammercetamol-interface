@@ -1,48 +1,119 @@
-import React, { useState, useReducer, useRef } from "react";
+import { useState, useReducer, useEffect } from "react";
 import Button from "../UI/Button/Button";
-import Input from "../UI/Input/Input";
+import { Input } from "../UI/Input/Input";
 import styles from "./RegistrationForm.module.css";
 
+const reducer = (state, action) => {
+  if (action.type === "firstname") {
+    return {
+      ...state,
+      firstname: action.payload,
+    };
+  } else if (action.type === "lastname") {
+    return {
+      ...state,
+      lastname: action.payload,
+    };
+  } else if (action.type === "othername") {
+    return {
+      ...state,
+      othername: action.payload,
+    };
+  } else if (action.type === "email") {
+    return {
+      ...state,
+      email: action.payload,
+      emailValid: action.payload.includes("@"),
+    };
+  } else if (action.type === "username") {
+    return {
+      ...state,
+      username: action.payload,
+    };
+  } else if (action.type === "password") {
+    return {
+      ...state,
+      password: action.payload,
+      passwordValid: action.payload.length > 6,
+    };
+  } else if (action.type === "dob") {
+    return {
+      ...state,
+      dob: action.payload,
+    };
+  }
+
+  if (action.type === "bluremail") {
+    return {
+      ...state,
+      emailValid: state.email.includes("@"),
+    };
+  } else if (action.type === "blurpassword") {
+    return {
+      ...state,
+      passwordValid: state.password.length > 6,
+    };
+  }
+};
+
+const initials = {
+  firstname: "",
+  lastname: "",
+  othername: "",
+  email: "",
+  username: "",
+  password: "",
+  dob: "",
+  emailValid: null,
+  passwordValid: null,
+};
+
 const RegistrationForm = (props) => {
-  const [details, setDetails] = useState({
-    firstname: "",
-    lastname: "",
-    othername: "",
-    username: "",
-    password: "",
-    dob: "",
-  });
-  const inputRef = useRef();
+  const [formValidity, setFormValidity] = useState(false);
 
-  // useState({
-  //   firstname: null,
-  //   lastname: null,
-  //   othername: null,
-  //   username: null,
-  //   password: null,
-  // });
+  const [state, dispatch] = useReducer(reducer, initials);
 
-  const changeHandler = (setDetails, newKey) => {
-    setDetails((preState) => {
-      return {
-        ...preState,
-        ...newKey,
-      };
+  const {
+    firstname,
+    lastname,
+    othername,
+    email,
+    username,
+    password,
+    dob,
+    emailValid,
+    passwordValid,
+  } = state;
+
+  useEffect(() => {
+    const time = setTimeout(() => {
+      setFormValidity(emailValid && passwordValid);
+    }, 500);
+    return () => {
+      clearTimeout(time);
+    };
+  }, [emailValid, passwordValid]);
+
+  const validate = (event) => {
+    dispatch({ type: `blur${event.target.name}` });
+  };
+
+  const changeHandler = (event) => {
+    dispatch({
+      type: event.target.name,
+      payload: event.target.value,
     });
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log("This is an object ", details);
-    setDetails({
-      firstname: "",
-      lastname: "",
-      othername: "",
-      username: "",
-      password: "",
-      dob: "",
-    });
-
+    if (formValidity) {
+      console.log("This is the value", state);
+    } else if (!emailValid) {
+      console.log("email is not valid");
+    } else {
+      console.log("password is not valid");
+    }
     // props.onLogin()
   };
 
@@ -58,88 +129,64 @@ const RegistrationForm = (props) => {
               submitHandler(event);
             }}
           >
-            <div>
-              <Input ref={inputRef} id="name" label="Name" type="name" />
-              <div className={styles.RegistrationLabels}>
-                <label>Firstname</label>
-                <input
-                  required={true}
-                  type="text"
-                  value={details.firstname}
-                  onChange={(event) => {
-                    changeHandler(setDetails, {
-                      firstname: event.target.value,
-                    });
-                  }}
-                />
-              </div>
-              <div className={styles.RegistrationLabels}>
-                <label>Lastname</label>
-                <input
-                  required={true}
-                  type="text"
-                  value={details.lastname}
-                  onChange={(event) => {
-                    setDetails((preState) => ({
-                      ...preState,
-                      lastname: event.target.value,
-                    }));
-                  }}
-                />
-              </div>
-              <div className={styles.RegistrationLabels}>
-                <label>Othername</label>
-                <input
-                  required={true}
-                  type="text"
-                  value={details.othername}
-                  onChange={(event) => {
-                    changeHandler(setDetails, {
-                      othername: event.target.value,
-                    });
-                  }}
-                />
-              </div>
-              <div className={styles.RegistrationLabels}>
-                <label>Username</label>
-                <input
-                  required={true}
-                  type="text"
-                  value={details.username}
-                  onChange={(event) => {
-                    changeHandler(setDetails, {
-                      username: event.target.value,
-                    });
-                  }}
-                />
-              </div>
-              <div className={styles.RegistrationLabels}>
-                <label>Password</label>
-                <input
-                  required={true}
-                  type="password"
-                  value={details.password}
-                  onChange={(event) => {
-                    changeHandler(setDetails, {
-                      password: event.target.value,
-                    });
-                  }}
-                />
-              </div>
-              <div className={styles.RegistrationLabels}>
-                <label>Date_of_Birth</label>
-                <input
-                  required={true}
-                  type="date"
-                  value={details.dob}
-                  onChange={(event) => {
-                    changeHandler(setDetails, {
-                      dob: event.target.value,
-                    });
-                  }}
-                />
-              </div>
-            </div>
+            <Input
+              id="firstname"
+              name="firstname"
+              label="Firstname"
+              type="text"
+              value={firstname}
+              onChange={changeHandler}
+            />
+            <Input
+              id="lastname"
+              name="lastname"
+              label="Lastname"
+              type="text"
+              value={lastname}
+              onChange={changeHandler}
+            />
+            <Input
+              id="othername"
+              name="othername"
+              label="Othername"
+              type="text"
+              value={othername}
+              onChange={changeHandler}
+            />
+            <Input
+              id="e-mail"
+              name="email"
+              label="E-mail"
+              type="email"
+              value={email}
+              onBlur={validate}
+              onChange={changeHandler}
+            />
+            <Input
+              id="username"
+              name="username"
+              label="username"
+              type="text"
+              value={username}
+              onChange={changeHandler}
+            />
+            <Input
+              id="Password"
+              name="password"
+              label="Password"
+              type="password"
+              value={password}
+              onBlur={validate}
+              onChange={changeHandler}
+            />
+            <Input
+              id="dob"
+              name="dob"
+              label="Data of Birth"
+              type="date"
+              value={dob}
+              onChange={changeHandler}
+            />
             <Button type="submit" className={styles.submitButton}>
               Submit
             </Button>
