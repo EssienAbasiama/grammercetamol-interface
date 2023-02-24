@@ -29,6 +29,7 @@ export const Input = forwardRef((props, ref) => {
           onChange={props.onChange}
           onBlur={props.onBlur}
         />
+        {props.hasError && <p>{props.message}</p>}
       </div>
     </>
   );

@@ -1,101 +1,81 @@
-import { useReducer, useRef } from "react";
-// import { useState, useEffect, useReducer, useRef } from "react";
+import { useRef, useState } from "react";
+import { sendRequest, useInput } from "../../hooks/custome-hooks";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/auto";
+
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 import { Input } from "../UI/Input/Input";
-
 import styles from "./Login.module.css";
 
-// const emailInitial = { value: "", isValid: null };
-// const passwordInitial = { value: "", isValid: null };
-
-const initials = {
-  email: "",
-  password: "",
-};
-const reducer = (state, action) => {
-  if (action.type === "mail") {
-    return {
-      ...state,
-      email: action.payload,
-    };
-  } else if (action.type === "pw") {
-    return {
-      ...state,
-      password: action.payload,
-    };
-  }
-};
-
-// Component begins here
-const Login = (props) => {
-  const [state, dispatch] = useReducer(reducer, initials);
-
+const Login = () => {
+  const [Error, setError] = useState(false);
+  const dispatch = useDispatch();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
-  const Changehandler = (event) => {
-    dispatch({
-      type: event.target.name,
-      payload: event.target.value,
-    });
-  };
+  const isNotEmpty = (evt) => evt.trim() !== "";
 
-  //   dispatchEmail({ type: "USER_INPUT", value: event.target.value });
-  // };
-  // const passwordChangeHandler = (event) => {
-  //   dispatchPassword({ type: "USER_INPUT", value: event.target.value });
-  // };
+  const {
+    value: username,
+    isValid: usernameIsValid,
+    valueChangeHandler: usernameChangeHandler,
+    inputBlurHandler: usernameBlurHandler,
+    reset: usernameReset,
+  } = useInput(isNotEmpty);
+  const {
+    value: password,
+    isValid: passwordIsValid,
+    valueChangeHandler: passwordChangeHandler,
+    reset: passwordReset,
+  } = useInput(isNotEmpty);
 
-  // const validateEmail = () => {
-  //   dispatchEmail({ type: "INPUT_BLUR" });
-  // };
+  let formValid = false;
+  if (usernameIsValid && passwordIsValid) {
+    formValid = true;
+  }
 
-  // const validatePassword = () => {
-  //   dispatchPassword({ type: "INPUT_BLUR" });
-  // };
-
-  const { email, password } = state;
-
-  // const { isValid: passwordIsValid, value: passwordValue } = passwordState;
-
-  // useEffect(() => {
-  //   const identifier = setTimeout(() => {
-  //     setFormValid(emailIsValid && passwordIsValid);
-  //   }, 500);
-  //   return () => {
-  //     clearTimeout(identifier);
-  //   };
-  // }, [emailIsValid, passwordIsValid]);
-
-  // const submitHandler = (event) => {
-  //   event.preventDefault();
-  //   if (formValid) {
-  //     console.log(emailState, passwordState);
-  //     props.onLoggin(emailValue, passwordValue);
-  //   } else if (!emailIsValid) {
-  //     emailInputRef.current.focus();
-  //   } else {
-  //     passwordInputRef.current.focus();
-  //   }
-  // };
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(state);
+    if (formValid) {
+      try {
+        setError(false);
+        const data = await sendRequest({
+          url: process.env.React_App_Login_Api,
+          method: process.env.React_App_Request_Method.post,
+          headers: { "Content-Type": "application/json" },
+          body: {
+            username: username,
+            password: password,
+          },
+        });
+        dispatch(
+          authActions.loggin({
+            jwt: data.token,
+          })
+        );
+        console.log(data.token);
+      } catch (err) {
+        console.error(err.message);
+        setError(true);
+      }
+    }
+    usernameReset();
+    passwordReset();
   };
   return (
     <Card className={styles.login}>
+      {Error && <p>Username or password incorrect!</p>}
       <form onSubmit={submitHandler}>
         <Input
           ref={emailInputRef}
           id="email"
           name="mail"
           label="E-mail"
-          type="email"
-          // isValid={emailIsValid}
-          value={email}
-          // onBlur={validateEmail}
-          onChange={Changehandler}
+          type="text"
+          value={username}
+          onBlur={usernameBlurHandler}
+          onChange={usernameChangeHandler}
         />
         <Input
           ref={passwordInputRef}
@@ -103,10 +83,8 @@ const Login = (props) => {
           name="pw"
           label="Password"
           type="password"
-          // isValid={passwordIsValid}
           value={password}
-          // onBlur={validatePassword}
-          onChange={Changehandler}
+          onChange={passwordChangeHandler}
         />
         <div className={styles.btn}>
           <Button type="submit" className={styles.btn}>

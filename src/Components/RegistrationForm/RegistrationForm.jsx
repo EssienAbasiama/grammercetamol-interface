@@ -1,120 +1,95 @@
-import { useState, useReducer, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { sendRequest, useInput } from "../../hooks/custome-hooks";
 import Button from "../UI/Button/Button";
 import { Input } from "../UI/Input/Input";
 import styles from "./RegistrationForm.module.css";
 
-const reducer = (state, action) => {
-  if (action.type === "firstname") {
-    return {
-      ...state,
-      firstname: action.payload,
-    };
-  } else if (action.type === "lastname") {
-    return {
-      ...state,
-      lastname: action.payload,
-    };
-  } else if (action.type === "othername") {
-    return {
-      ...state,
-      othername: action.payload,
-    };
-  } else if (action.type === "email") {
-    return {
-      ...state,
-      email: action.payload,
-      emailValid: action.payload.includes("@"),
-    };
-  } else if (action.type === "username") {
-    return {
-      ...state,
-      username: action.payload,
-    };
-  } else if (action.type === "password") {
-    return {
-      ...state,
-      password: action.payload,
-      passwordValid: action.payload.length > 6,
-    };
-  } else if (action.type === "dob") {
-    return {
-      ...state,
-      dob: action.payload,
-    };
-  }
-
-  if (action.type === "bluremail") {
-    return {
-      ...state,
-      emailValid: state.email.includes("@"),
-    };
-  } else if (action.type === "blurpassword") {
-    return {
-      ...state,
-      passwordValid: state.password.length > 6,
-    };
-  }
-};
-
-const initials = {
-  firstname: "",
-  lastname: "",
-  othername: "",
-  email: "",
-  username: "",
-  password: "",
-  dob: "",
-  emailValid: null,
-  passwordValid: null,
-};
-
-const RegistrationForm = (props) => {
+const RegistrationForm = () => {
   const [formValidity, setFormValidity] = useState(false);
-
-  const [state, dispatch] = useReducer(reducer, initials);
+  const notEmpty = (evt) => evt.trim() !== "";
+  const pass = (evt) => evt.trim() !== "" && evt.length > 6;
 
   const {
-    firstname,
-    lastname,
-    othername,
-    email,
-    username,
-    password,
-    dob,
-    emailValid,
-    passwordValid,
-  } = state;
+    value: firstname,
+    isValid: firstnameIsValid,
+    hasError: firstnameHasError,
+    valueChangeHandler: firstnameChangeHandler,
+    inputBlurHandler: firstnameBlurHandler,
+    reset: firstnameReset,
+  } = useInput(notEmpty);
 
+  const {
+    value: lastname,
+    isValid: lastnameIsValid,
+    hasError: lastnameHasError,
+    valueChangeHandler: lastnameChangeHandler,
+    inputBlurHandler: lastnameBlurHandler,
+    reset: lastnameReset,
+  } = useInput(notEmpty);
+
+  const {
+    value: othername,
+    isValid: othernameIsValid,
+    hasError: othernameHasError,
+    valueChangeHandler: othernameChangeHandler,
+    inputBlurHandler: othernameBlurHandler,
+    reset: othernameReset,
+  } = useInput(notEmpty);
+
+  const {
+    value: email,
+    isValid: emailIsValid,
+    hasError: emailHasError,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+    reset: emailReset,
+  } = useInput(notEmpty);
+
+  const {
+    value: password,
+    isValid: passwordIsValid,
+    hasError: passwordHasError,
+    valueChangeHandler: passwordChangeHandler,
+    inputBlurHandler: passwordBlurHandler,
+    reset: passwordReset,
+  } = useInput(pass);
+
+  const {
+    value: dob,
+    isValid: dobIsValid,
+    hasError: dobHasError,
+    valueChangeHandler: dobChangeHandler,
+    reset: dobReset,
+  } = useInput(notEmpty);
+  const valid =
+    firstnameIsValid &&
+    lastnameIsValid &&
+    othernameIsValid &&
+    emailIsValid &&
+    passwordIsValid &&
+    dobIsValid;
   useEffect(() => {
     const time = setTimeout(() => {
-      setFormValidity(emailValid && passwordValid);
+      setFormValidity(valid);
     }, 500);
     return () => {
       clearTimeout(time);
     };
-  }, [emailValid, passwordValid]);
+  }, [valid]);
 
-  const validate = (event) => {
-    dispatch({ type: `blur${event.target.name}` });
-  };
-
-  const changeHandler = (event) => {
-    dispatch({
-      type: event.target.name,
-      payload: event.target.value,
-    });
-  };
-
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     if (formValidity) {
-      console.log("This is the value", state);
-    } else if (!emailValid) {
-      console.log("email is not valid");
-    } else {
-      console.log("password is not valid");
+      try {
+        const response = await sendRequest({});
+      } catch (err) {}
     }
-    // props.onLogin()
+    firstnameReset();
+    lastnameReset();
+    othernameReset();
+    emailReset();
+    passwordReset();
+    dobReset();
   };
 
   return (
@@ -124,18 +99,17 @@ const RegistrationForm = (props) => {
           <h3 className={styles.RegistrationFormBodyHeader}>
             Registration Form
           </h3>
-          <form
-            onSubmit={(event) => {
-              submitHandler(event);
-            }}
-          >
+          <form onSubmit={submitHandler}>
             <Input
               id="firstname"
               name="firstname"
               label="Firstname"
               type="text"
               value={firstname}
-              onChange={changeHandler}
+              onBlur={firstnameBlurHandler}
+              onChange={firstnameChangeHandler}
+              hasError={firstnameHasError}
+              message="space cannot be empty"
             />
             <Input
               id="lastname"
@@ -143,7 +117,10 @@ const RegistrationForm = (props) => {
               label="Lastname"
               type="text"
               value={lastname}
-              onChange={changeHandler}
+              onBlur={lastnameBlurHandler}
+              onChange={lastnameChangeHandler}
+              hasError={lastnameHasError}
+              message="space cannot be empty"
             />
             <Input
               id="othername"
@@ -151,7 +128,10 @@ const RegistrationForm = (props) => {
               label="Othername"
               type="text"
               value={othername}
-              onChange={changeHandler}
+              onBlur={othernameBlurHandler}
+              onChange={othernameChangeHandler}
+              hasError={othernameHasError}
+              message="space cannot be empty"
             />
             <Input
               id="e-mail"
@@ -159,25 +139,22 @@ const RegistrationForm = (props) => {
               label="E-mail"
               type="email"
               value={email}
-              onBlur={validate}
-              onChange={changeHandler}
+              onBlur={emailBlurHandler}
+              onChange={emailChangeHandler}
+              hasError={emailHasError}
+              message="space cannot be empty"
             />
-            <Input
-              id="username"
-              name="username"
-              label="username"
-              type="text"
-              value={username}
-              onChange={changeHandler}
-            />
+
             <Input
               id="Password"
               name="password"
               label="Password"
               type="password"
               value={password}
-              onBlur={validate}
-              onChange={changeHandler}
+              onBlur={passwordBlurHandler}
+              onChange={passwordChangeHandler}
+              hasError={passwordHasError}
+              message="your password must be longer than 6 digits"
             />
             <Input
               id="dob"
@@ -185,7 +162,9 @@ const RegistrationForm = (props) => {
               label="Data of Birth"
               type="date"
               value={dob}
-              onChange={changeHandler}
+              onChange={dobChangeHandler}
+              hasError={dobHasError}
+              message="date of birth is required"
             />
             <Button type="submit" className={styles.submitButton}>
               Submit

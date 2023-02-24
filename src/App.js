@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import LandPage from "./Components/LandPage/LandPage";
 import LoginForm from "./Components/LoginForm/Login";
-import style from "./App.module.css";
+import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
+
 import {
   Teacher,
   Teacher1,
@@ -17,9 +18,7 @@ import {
   Logo,
   Smile,
 } from "./Components/UI/constants";
-import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
-
-// import images
+import style from "./App.module.css";
 
 const phase2 = [
   {
@@ -64,24 +63,15 @@ const phase3 = [
 ];
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   useEffect(() => {
     const storedUserLoggedInformation = localStorage.getItem("isLoggedIn");
     if (storedUserLoggedInformation === "1") {
-      setIsLoggedIn(true);
     } else {
     }
   }, []);
 
-  const loginHandler = (email, password) => {
-    setIsLoggedIn(true);
-    localStorage.setItem("isLoggedIn", "1");
-    console.log(email, password);
-  };
-
   return (
-    <>
+    <div className={style.all}>
       <Router>
         <Routes>
           <Route
@@ -100,25 +90,8 @@ function App() {
           <Route exact path="/login" element={<LoginForm />} />
         </Routes>
       </Router>
-    </>
+    </div>
   );
-
-  // return (
-  //   <>
-  //     <div className={style.all}>
-  //       <RegistrationForm />
-  //       {!isLoggedIn && <LoginForm onLoggin={loginHandler} />}
-  //       {isLoggedIn && (
-  //         <LandPage
-  //           phase1={Microphone}
-  //           phase2={phase2}
-  //           phase3={phase3}
-  //           footerLogo={Logo}
-  //         />
-  //       )}
-  //     </div>
-  //   </>
-  // );
 }
 
 export default App;
