@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useEffect } from "react";
 import LandPage from "./Components/LandPage/LandPage";
 import LoginForm from "./Components/LoginForm/Login";
-import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
+import RegistrationForm from "./Components/Registration/Registration";
 
 import {
   Teacher,

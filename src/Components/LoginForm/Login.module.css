@@ -3,7 +3,8 @@
   max-width: 40rem;
   margin: 2rem auto;
   padding: 2rem;
-  background: rgb(141, 25, 25);
+  background: rgba(11, 13, 28, 0.702);
+  color: rgb(18, 17, 17);
 }
 
 .btn {

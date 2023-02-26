@@ -1,13 +1,16 @@
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { sendRequest, useInput } from "../../hooks/custome-hooks";
 import Button from "../UI/Button/Button";
 import { Input } from "../UI/Input/Input";
 import styles from "./RegistrationForm.module.css";
 
-const RegistrationForm = () => {
+const notEmpty = (evt) => evt.trim() !== "";
+const pass = (evt) => evt.trim() !== "" && evt.length > 6;
+
+const Registration = () => {
   const [formValidity, setFormValidity] = useState(false);
-  const notEmpty = (evt) => evt.trim() !== "";
-  const pass = (evt) => evt.trim() !== "" && evt.length > 6;
+  const navigate = useNavigate();
 
   const {
     value: firstname,
@@ -90,6 +93,7 @@ const RegistrationForm = () => {
     emailReset();
     passwordReset();
     dobReset();
+    navigate("/login");
   };
 
   return (
@@ -171,9 +175,13 @@ const RegistrationForm = () => {
             </Button>
           </form>
         </div>
+        <p>Already have an account?</p>
+        <NavLink to={process.env.React_App_Login} className={styles.log}>
+          Login
+        </NavLink>
       </div>
     </>
   );
 };
 
-export default RegistrationForm;
+export default Registration;

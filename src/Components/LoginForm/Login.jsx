@@ -1,15 +1,18 @@
 import { useRef, useState } from "react";
-import { sendRequest, useInput } from "../../hooks/custome-hooks";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { sendRequest, useInput } from "../../hooks/custome-hooks";
 import { authActions } from "../../store/auto";
+import { Input } from "../UI/Input/Input";
 
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
-import { Input } from "../UI/Input/Input";
+
 import styles from "./Login.module.css";
 
 const Login = () => {
   const [Error, setError] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -42,7 +45,7 @@ const Login = () => {
         setError(false);
         const data = await sendRequest({
           url: process.env.React_App_Login_Api,
-          method: process.env.React_App_Request_Method.post,
+          method: process.env.React_App_Request_PMethod,
           headers: { "Content-Type": "application/json" },
           body: {
             username: username,
@@ -62,7 +65,9 @@ const Login = () => {
     }
     usernameReset();
     passwordReset();
+    navigate(process.env.React_App_Home);
   };
+
   return (
     <Card className={styles.login}>
       {Error && <p>Username or password incorrect!</p>}
@@ -92,6 +97,11 @@ const Login = () => {
           </Button>
         </div>
       </form>
+      <div className={styles.btn}>
+        <p>Don't have an Account? </p>
+        <NavLink to={process.env.React_App_Register}>Sign up</NavLink>
+        <span> here</span>
+      </div>
     </Card>
   );
 };
