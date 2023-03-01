@@ -84,7 +84,7 @@ const Registration = () => {
     event.preventDefault();
     if (formValidity) {
       try {
-        // const response = await sendRequest({});
+        const response = await sendRequest({});
       } catch (err) {}
     }
     firstnameReset();

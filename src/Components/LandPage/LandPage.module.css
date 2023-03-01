@@ -1,7 +1,6 @@
 .LandPage {
-  background-color: rgb(39, 61, 38);
   min-height: 100vh;
-  /* background-image: url("../UI/Images/landingPage_bg.png"); */
+  background-image: url("../UI/Images/landingPage_bg.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
