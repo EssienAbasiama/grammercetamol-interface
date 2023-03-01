@@ -1,10 +1,12 @@
 import React from "react";
+
 import Phase1 from "./Phase1/Phase1";
 import Phase2 from "./Phase2/Phase2";
-import styles from "./LandPage.module.css";
 import NavBar from "../NavBars/NavBar";
 import Phase3 from "./Phase3/Phase3";
 import Footer from "../Footer/Footer";
+
+import styles from "./LandPage.module.css";
 const LandPage = (props) => {
   const present = (email) => {
     console.log(email);

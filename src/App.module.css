@@ -8,16 +8,10 @@
   display: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-li,
-ol,
-ul,
-img {
-  padding: 0;
+* {
+  text-decoration: none;
   margin: 0;
+  padding: 0;
+  color: white;
+  list-style: none;
 }
