@@ -1,72 +1,49 @@
-import React, { useEffect } from "react";
-// import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
+import Button from "../UI/Button/Button";
+import styles from "./NavBar.module.css";
 import { Logo } from "../UI/constants";
-import "./nav.css";
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
-  useEffect(() => {
-    const toggleBtn = document.querySelector(".toggle_btn");
-    const toggleBtnIcon = document.querySelector(".toggle_btn i");
-    const dropDownMenu = document.querySelector(".dropdown_menu");
+  const [clicked, setClicked] = useState(false);
 
-    toggleBtn.onclick = function () {
-      dropDownMenu.classList.toggle("open");
-      const isOpen = dropDownMenu.classList.contains("open");
-      toggleBtnIcon.classList = isOpen
-        ? "fa-solid fa-xmark"
-        : "fa-solid fa-bars";
-    };
-  }, []);
+  const handleClick = () => {
+    setClicked((previous) => !previous);
+  };
+
+  const isClicked = clicked
+    ? `${styles.navmenu} ${styles.active}`
+    : `${styles.navmenu}`;
+
   return (
-    <header>
-      <div className="navbar">
-        <div className="logo">
-          <a href="#J">
-            <img src={Logo} alt="" />
-          </a>
-        </div>
-        <ul className="links">
-          <li>
-            <a href="home">Home</a>
-          </li>
-          <li>
-            <a href="about">about</a>
-          </li>
-          <li>
-            <a href="services">services</a>
-          </li>
-          <li>
-            <a href="contact">Contacts</a>
-          </li>
-        </ul>
-        <a href="J" className="action_btn">
-          Get Started
-        </a>
-        <div className="toggle_btn">
-          <i className="fa-solid fa-bars"></i>
-        </div>
+    <nav className={styles.navitems}>
+      <div className={styles.logo}>
+        <img src={Logo} alt="" />
       </div>
-      <div className="dropdown_menu">
-        <li>
-          <a href="home">Home</a>
-        </li>
-        <li>
-          <a href="about">about</a>
-        </li>
-        <li>
-          <a href="services">services</a>
-        </li>
-        <li>
-          <a href="contact">Contacts</a>
-        </li>
-        <li>
-          <a href="#F" className="action_btn">
-            Get Started
-          </a>
-        </li>
+      <div className={styles.hambuger} onClick={handleClick}>
+        <i className={clicked ? "fa-solid fa-xmark" : "fa-solid fa-bars"} />
       </div>
-    </header>
+      <ul className={isClicked}>
+        <li>
+          <NavLink>Home</NavLink>
+        </li>
+        <li>
+          <NavLink>About Us</NavLink>
+        </li>
+        <li>
+          <NavLink>Courses</NavLink>
+        </li>
+        <li>
+          <NavLink>Contacts</NavLink>
+        </li>
+        <li>
+          <NavLink>
+            <Button className={styles.btn}>Sign Up</Button>
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
   );
 };
 
