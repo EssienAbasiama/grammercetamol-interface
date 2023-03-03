@@ -36,6 +36,7 @@ span {
 .button {
   border: #ff3737;
   background-color: #ff3737;
+  padding: 0.8rem 3rem;
 }
 
 .microphone {

@@ -1,7 +1,9 @@
 import React from "react";
-import styles from "./Phase1.module.css";
 import Button from "../../UI/Button/Button";
-const Phase1 = (props) => {
+import styles from "./Phase1.module.css";
+import { Microphone } from "../../UI/constants";
+
+const Phase1 = () => {
   return (
     <>
       <div className={styles.clinic}>
@@ -18,7 +20,7 @@ const Phase1 = (props) => {
           <Button className={styles.button}>Get Started</Button>
         </div>
         <div className={styles.microphone}>
-          <img src={props.microphone} alt=""></img>
+          <img src={Microphone} alt=""></img>
         </div>
       </div>
     </>

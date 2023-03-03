@@ -1,6 +1,25 @@
 import React from "react";
 import style from "./Phase2.module.css";
-// import image from "../../UI/Images/teacher.png";
+import { Teacher, Teacher4, Study, Smile } from "../../UI/constants";
+
+const phase2 = [
+  {
+    id: "1",
+    images: Teacher,
+  },
+  {
+    id: "2",
+    images: Teacher4,
+  },
+  {
+    id: "3",
+    images: Study,
+  },
+  {
+    id: "4",
+    images: Smile,
+  },
+];
 
 const Phase2 = (props) => {
   return (
@@ -10,7 +29,7 @@ const Phase2 = (props) => {
           <h2>Explore Course</h2>
         </div>
         <div className={style.course_contents}>
-          {props.courses.map((course) => (
+          {phase2.map((course) => (
             <div key={course.id} className={style.course_contents_}>
               <div className={style.course_image}>
                 <img src={course.images} alt="" />
