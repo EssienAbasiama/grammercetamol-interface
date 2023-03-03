@@ -26,7 +26,7 @@ const NavBar = () => {
       </div>
       <ul className={isClicked}>
         <li>
-          <NavLink>Home</NavLink>
+          <NavLink to={process.env.React_App_Home}>Home</NavLink>
         </li>
         <li>
           <NavLink>About Us</NavLink>
@@ -38,7 +38,7 @@ const NavBar = () => {
           <NavLink>Contacts</NavLink>
         </li>
         <li>
-          <NavLink>
+          <NavLink to={process.env.React_App_Register}>
             <Button className={styles.btn}>Sign Up</Button>
           </NavLink>
         </li>
