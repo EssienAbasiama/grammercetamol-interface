@@ -1,0 +1,31 @@
+.ok {
+  margin: 0 1rem;
+  border: none;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: baseline;
+}
+
+.ok input {
+  color: black;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  /* border-bottom: 1px solid black; */
+  margin: 0.5rem;
+  padding-bottom: 1rem;
+  display: inline;
+  width: 90%;
+}
+
+.ok input:focus {
+  border: none;
+}
+
+i {
+  color: black;
+  padding: 0;
+  margin-bottom: 5px;
+}
+p {
+  text-align: center;
+}

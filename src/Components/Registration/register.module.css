@@ -15,17 +15,13 @@
   width: 70%;
   margin: auto;
   display: flex;
-  min-height: 50vh;
+  height: auto;
   box-shadow: 0px 0px 28px rgba(0, 0, 0, 0.486);
   border-radius: 3%;
 }
 
 .form {
   width: 50%;
-}
-
-.form_ form {
-  margin-bottom: 9rem;
 }
 
 #btn {
@@ -55,14 +51,7 @@
   border-radius: 0 3% 3% 0;
 }
 
-@media screen and (max-width: 440px) {
-  .center {
-    width: 90%;
-    /* margin: 0 1rem; */
-  }
-}
-
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 800px) {
   .form__ {
     display: none;
   }

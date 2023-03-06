@@ -1,11 +1,12 @@
 import { useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { sendRequest, useInput } from "../../hooks/custome-hooks";
-import { authActions } from "../../store/auto";
-import { Input } from "../UI/Input/Input";
 
-import Card from "../UI/Card/Card";
+import { sendRequest, useInput } from "../../hooks/custome-hooks";
+import { authActions } from "../../store/auth";
+import { Input } from "../UI/Input/Input";
+import { Logo } from "../UI/constants";
+
 import Button from "../UI/Button/Button";
 
 import styles from "./Login.module.css";
@@ -55,54 +56,65 @@ const Login = () => {
         dispatch(
           authActions.loggin({
             jwt: data.token,
+            firstname: data.token,
           })
         );
+
         console.log(data.token);
+
+        usernameReset();
+        passwordReset();
+        navigate(process.env.React_App_Home);
       } catch (err) {
         console.error(err.message);
         setError(true);
       }
     }
-    usernameReset();
-    passwordReset();
-    navigate(process.env.React_App_Home);
   };
 
   return (
-    <Card className={styles.login}>
-      {Error && <p>Username or password incorrect!</p>}
-      <form onSubmit={submitHandler}>
-        <Input
-          ref={emailInputRef}
-          id="email"
-          name="mail"
-          label="E-mail"
-          type="text"
-          value={username}
-          onBlur={usernameBlurHandler}
-          onChange={usernameChangeHandler}
-        />
-        <Input
-          ref={passwordInputRef}
-          id="password"
-          name="pw"
-          label="Password"
-          type="password"
-          value={password}
-          onChange={passwordChangeHandler}
-        />
-        <div className={styles.btn}>
-          <Button type="submit" className={styles.btn}>
-            Login
-          </Button>
+    <section className={styles.section}>
+      <div className={styles.center}>
+        <div className={styles.form}>
+          <div className={styles.form_}>
+            <img src={Logo} alt="" className={styles.logo} />
+            <h3 className={styles.h3}>Registration Form</h3>
+            {Error && <p>Username or password incorrect!</p>}
+            <form onSubmit={submitHandler}>
+              <Input
+                ref={emailInputRef}
+                id="email"
+                name="mail"
+                label="E-mail"
+                type="text"
+                value={username}
+                onBlur={usernameBlurHandler}
+                onChange={usernameChangeHandler}
+              />
+              <Input
+                ref={passwordInputRef}
+                id="password"
+                name="pw"
+                label="Password"
+                type="password"
+                value={password}
+                onChange={passwordChangeHandler}
+              />
+              <div id={styles.btn}>
+                <Button type="submit" className={styles.btn}>
+                  Login
+                </Button>
+              </div>
+            </form>
+            <p>Don't have an Account? </p>
+            <NavLink to={process.env.React_App_Register} id={styles.btn}>
+              Sign Up
+            </NavLink>
+          </div>
         </div>
-      </form>
-      <div className={styles.btn}>
-        <p>Don't have an Account? </p>
-        <NavLink to={process.env.React_App_Register}>Sign up</NavLink>
-        <span> here</span>
+        <div className={styles.form__}></div>
       </div>
-    </Card>
+    </section>
   );
 };
 

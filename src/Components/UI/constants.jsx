@@ -11,3 +11,4 @@ export const Logo = require("../UI/Images/logo.png");
 export const LandingPage_bg = require("../UI/Images/landingPage_bg.png");
 export const LandingPage = require("../UI/Images/landingPage.png");
 export const Smile = require("../UI/Images/smile.png");
+export const Login = require("../UI/Images/Rectangle.png");

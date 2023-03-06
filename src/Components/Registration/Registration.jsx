@@ -1,9 +1,12 @@
-import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+
 import { sendRequest, useInput } from "../../hooks/custome-hooks";
 import Button from "../UI/Button/Button";
+import { Logo } from "../UI/constants";
 import { Input } from "../UI/Input/Input";
-import styles from "./RegistrationForm.module.css";
+
+import styles from "./register.module.css";
 
 const notEmpty = (evt) => evt.trim() !== "";
 const pass = (evt) => evt.trim() !== "" && evt.length > 6;
@@ -57,20 +60,13 @@ const Registration = () => {
     reset: passwordReset,
   } = useInput(pass);
 
-  const {
-    value: dob,
-    isValid: dobIsValid,
-    hasError: dobHasError,
-    valueChangeHandler: dobChangeHandler,
-    reset: dobReset,
-  } = useInput(notEmpty);
   const valid =
     firstnameIsValid &&
     lastnameIsValid &&
     othernameIsValid &&
     emailIsValid &&
-    passwordIsValid &&
-    dobIsValid;
+    passwordIsValid;
+
   useEffect(() => {
     const time = setTimeout(() => {
       setFormValidity(valid);
@@ -86,101 +82,93 @@ const Registration = () => {
       try {
         const response = await sendRequest({});
       } catch (err) {}
+      firstnameReset();
+      lastnameReset();
+      othernameReset();
+      emailReset();
+      passwordReset();
+      navigate("/login");
     }
-    firstnameReset();
-    lastnameReset();
-    othernameReset();
-    emailReset();
-    passwordReset();
-    dobReset();
-    navigate("/login");
   };
 
   return (
-    <>
-      <div className={styles.RegistrationFormBody}>
-        <div className={styles.RegistrationBody}>
-          <h3 className={styles.RegistrationFormBodyHeader}>
-            Registration Form
-          </h3>
-          <form onSubmit={submitHandler}>
-            <Input
-              id="firstname"
-              name="firstname"
-              label="Firstname"
-              type="text"
-              value={firstname}
-              onBlur={firstnameBlurHandler}
-              onChange={firstnameChangeHandler}
-              hasError={firstnameHasError}
-              message="space cannot be empty"
-            />
-            <Input
-              id="lastname"
-              name="lastname"
-              label="Lastname"
-              type="text"
-              value={lastname}
-              onBlur={lastnameBlurHandler}
-              onChange={lastnameChangeHandler}
-              hasError={lastnameHasError}
-              message="space cannot be empty"
-            />
-            <Input
-              id="othername"
-              name="othername"
-              label="Othername"
-              type="text"
-              value={othername}
-              onBlur={othernameBlurHandler}
-              onChange={othernameChangeHandler}
-              hasError={othernameHasError}
-              message="space cannot be empty"
-            />
-            <Input
-              id="e-mail"
-              name="email"
-              label="E-mail"
-              type="email"
-              value={email}
-              onBlur={emailBlurHandler}
-              onChange={emailChangeHandler}
-              hasError={emailHasError}
-              message="space cannot be empty"
-            />
-
-            <Input
-              id="Password"
-              name="password"
-              label="Password"
-              type="password"
-              value={password}
-              onBlur={passwordBlurHandler}
-              onChange={passwordChangeHandler}
-              hasError={passwordHasError}
-              message="your password must be longer than 6 digits"
-            />
-            <Input
-              id="dob"
-              name="dob"
-              label="Data of Birth"
-              type="date"
-              value={dob}
-              onChange={dobChangeHandler}
-              hasError={dobHasError}
-              message="date of birth is required"
-            />
-            <Button type="submit" className={styles.submitButton}>
-              Submit
-            </Button>
-          </form>
+    <section className={styles.section}>
+      <div className={styles.center}>
+        <div className={styles.form}>
+          <div className={styles.form_}>
+            <img src={Logo} alt="" className={styles.logo} />
+            <h3 className={styles.h3}>Registration Form</h3>
+            <form onSubmit={submitHandler}>
+              <Input
+                id="firstname"
+                name="firstname"
+                label="Firstname"
+                type="text"
+                value={firstname}
+                onBlur={firstnameBlurHandler}
+                onChange={firstnameChangeHandler}
+                hasError={firstnameHasError}
+                message="space cannot be empty"
+              />
+              <Input
+                id="lastname"
+                name="lastname"
+                label="Lastname"
+                type="text"
+                value={lastname}
+                onBlur={lastnameBlurHandler}
+                onChange={lastnameChangeHandler}
+                hasError={lastnameHasError}
+                message="space cannot be empty"
+              />
+              <Input
+                id="othername"
+                name="othername"
+                label="Othername"
+                type="text"
+                value={othername}
+                onBlur={othernameBlurHandler}
+                onChange={othernameChangeHandler}
+                hasError={othernameHasError}
+                message="space cannot be empty"
+              />
+              <Input
+                id="e-mail"
+                name="email"
+                label="E-mail"
+                type="email"
+                value={email}
+                onBlur={emailBlurHandler}
+                onChange={emailChangeHandler}
+                hasError={emailHasError}
+                message="space cannot be empty"
+              />
+              <Input
+                id="Password"
+                name="password"
+                label="Password"
+                type="password"
+                value={password}
+                onBlur={passwordBlurHandler}
+                onChange={passwordChangeHandler}
+                hasError={passwordHasError}
+                message="your password must be longer than 6 digits"
+              />
+              <div id={styles.btn}>
+                <Button type="submit" className={styles.btn}>
+                  Submit
+                </Button>
+              </div>
+            </form>
+            <p>Already have an account?</p>
+            <NavLink to={process.env.React_App_Login} id={styles.btn}>
+              Login
+            </NavLink>
+          </div>
         </div>
-        <p>Already have an account?</p>
-        <NavLink to={process.env.React_App_Login} className={styles.log}>
-          Login
-        </NavLink>
+        <div className={styles.form__}></div>
       </div>
-    </>
+    </section>
   );
 };
 
