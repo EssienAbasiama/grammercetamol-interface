@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import { sendRequest, useInput } from "../../hooks/custome-hooks";
-import Button from "../UI/Button/Button";
-import { Logo } from "../UI/constants";
-import { Input } from "../UI/Input/Input";
+import Button from "../../Components/UI/Button/Button";
+import { Logo } from "../../Components/UI/constants";
+import { Input } from "../../Components/UI/Input/Input";
 
 import styles from "./register.module.css";
+import Form from "../../Components/UI/Form/Form";
 
 const notEmpty = (evt) => evt.trim() !== "";
 const pass = (evt) => evt.trim() !== "" && evt.length > 6;
@@ -78,6 +79,7 @@ const Registration = () => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+    console.log(firstname, lastname, othername, email, password);
     if (formValidity) {
       try {
         const response = await sendRequest({});
@@ -90,15 +92,16 @@ const Registration = () => {
       navigate("/login");
     }
   };
-
   return (
     <section className={styles.section}>
       <div className={styles.center}>
         <div className={styles.form}>
           <div className={styles.form_}>
-            <img src={Logo} alt="" className={styles.logo} />
+            <Link to={process.env.React_App_Home}>
+              <img src={Logo} alt="" className={styles.logo} />
+            </Link>
             <h3 className={styles.h3}>Registration Form</h3>
-            <form onSubmit={submitHandler}>
+            <Form submit={submitHandler}>
               <Input
                 id="firstname"
                 name="firstname"
@@ -109,6 +112,7 @@ const Registration = () => {
                 onChange={firstnameChangeHandler}
                 hasError={firstnameHasError}
                 message="space cannot be empty"
+                icon="fa-solid fa-user"
               />
               <Input
                 id="lastname"
@@ -120,6 +124,7 @@ const Registration = () => {
                 onChange={lastnameChangeHandler}
                 hasError={lastnameHasError}
                 message="space cannot be empty"
+                icon="fa-solid fa-user"
               />
               <Input
                 id="othername"
@@ -131,6 +136,7 @@ const Registration = () => {
                 onChange={othernameChangeHandler}
                 hasError={othernameHasError}
                 message="space cannot be empty"
+                icon="fa-solid fa-user"
               />
               <Input
                 id="e-mail"
@@ -142,6 +148,7 @@ const Registration = () => {
                 onChange={emailChangeHandler}
                 hasError={emailHasError}
                 message="space cannot be empty"
+                icon="fa-solid fa-envelope"
               />
               <Input
                 id="Password"
@@ -153,13 +160,14 @@ const Registration = () => {
                 onChange={passwordChangeHandler}
                 hasError={passwordHasError}
                 message="your password must be longer than 6 digits"
+                icon="fa-solid fa-lock"
               />
               <div id={styles.btn}>
                 <Button type="submit" className={styles.btn}>
                   Submit
                 </Button>
               </div>
-            </form>
+            </Form>
             <p>Already have an account?</p>
             <NavLink to={process.env.React_App_Login} id={styles.btn}>
               Login

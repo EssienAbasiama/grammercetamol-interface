@@ -11,6 +11,7 @@
 
 .logo {
   justify-self: start;
+  padding-left: 2.5rem;
 }
 
 .navmenu {
@@ -37,6 +38,7 @@
 
 .hambuger i {
   font-size: 1.7rem;
+  color: white;
 }
 
 .btn {

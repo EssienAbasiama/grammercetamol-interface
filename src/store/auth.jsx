@@ -6,6 +6,7 @@ const authSlice = createSlice({
     firstname: "",
     lastname: "",
     authorizationToken: "",
+    roles: [],
     isLoggedIn: false,
   },
   reducers: {
@@ -14,10 +15,11 @@ const authSlice = createSlice({
       state.firstname = details.firstname;
       state.lastname = details.lastname;
       state.authorizationToken = details.jwt;
+      state.roles.push(details.roles);
       state.isLoggedIn = true;
       localStorage.setItem("jwt", details.jwt);
       localStorage.setItem("loggedIn", "true");
-      console.log(details.jwt);
+      console.log(state.roles);
     },
     logout(state, action) {
       state.isLoggedIn = false;

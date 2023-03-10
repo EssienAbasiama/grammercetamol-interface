@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useEffect } from "react";
 
-import LandPage from "./Components/LandPage/LandPage";
-import LoginForm from "./Components/LoginForm/Login";
-import RegistrationForm from "./Components/Registration/Registration";
+import LandPage from "./pages/land-page/LandPage";
+import LoginForm from "./pages/LoginForm/Login";
+import RegistrationForm from "./pages/Registration/Registration";
 
 import style from "./App.module.css";
+import Contacts from "./pages/contact-page/Contacts";
 
 function App() {
   useEffect(() => {
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/" element={<LandPage />} />
           <Route exact path="/register" element={<RegistrationForm />} />
           <Route exact path="/login" element={<LoginForm />} />
+          <Route exact path="/contacts" element={<Contacts />} />
         </Routes>
       </Router>
     </div>

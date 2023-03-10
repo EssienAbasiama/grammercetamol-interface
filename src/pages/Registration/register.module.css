@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   color: black;
+  background-color: white;
 }
 
 .h3 {
@@ -45,7 +46,7 @@
 
 .form__ {
   width: 50%;
-  background-image: url("../UI/Images/Login.jpg");
+  background-image: url("../../Components/UI/Images/Login.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 0 3% 3% 0;

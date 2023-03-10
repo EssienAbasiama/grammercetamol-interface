@@ -1,16 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-import Phase1 from "./Phase1/Phase1";
-import Phase2 from "./Phase2/Phase2";
-import NavBar from "../NavBars/NavBar";
-import Phase3 from "./Phase3/Phase3";
-import Footer from "../Footer/Footer";
+import Phase1 from "../../Components/LandPage/Phase1/Phase1";
+import Phase2 from "../../Components/LandPage/Phase2/Phase2";
+import NavBar from "../../Components/Template/NavBars/NavBar";
+import Phase3 from "../../Components/LandPage/Phase3/Phase3";
+import Footer from "../../Components/Template/Footer/Footer";
 import styles from "./LandPage.module.css";
 
 const LandPage = (props) => {
   const present = (email) => {
     console.log(email);
   };
+
+  const roles = useSelector((state) => state.auth.roles);
+  console.log(roles);
 
   return (
     <>

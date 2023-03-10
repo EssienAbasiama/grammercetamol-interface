@@ -1,13 +1,14 @@
 import { useRef, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { sendRequest, useInput } from "../../hooks/custome-hooks";
 import { authActions } from "../../store/auth";
-import { Input } from "../UI/Input/Input";
-import { Logo } from "../UI/constants";
+import { Input } from "../../Components/UI/Input/Input";
+import { Logo } from "../../Components/UI/constants";
 
-import Button from "../UI/Button/Button";
+import Form from "../../Components/UI/Form/Form";
+import Button from "../../Components/UI/Button/Button";
 
 import styles from "./Login.module.css";
 
@@ -41,6 +42,7 @@ const Login = () => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+
     if (formValid) {
       try {
         setError(false);
@@ -56,11 +58,13 @@ const Login = () => {
         dispatch(
           authActions.loggin({
             jwt: data.token,
-            firstname: data.token,
+            email: data.email,
+            refreshtoken: data.refreshToken,
+            roles: data.roles,
           })
         );
 
-        console.log(data.token);
+        console.log("This is data: ", data);
 
         usernameReset();
         passwordReset();
@@ -70,6 +74,7 @@ const Login = () => {
         setError(true);
       }
     }
+    console.log("what is this");
   };
 
   return (
@@ -77,10 +82,13 @@ const Login = () => {
       <div className={styles.center}>
         <div className={styles.form}>
           <div className={styles.form_}>
-            <img src={Logo} alt="" className={styles.logo} />
+            <Link to={process.env.React_App_Home}>
+              <img src={Logo} alt="" className={styles.logo} />
+            </Link>
+
             <h3 className={styles.h3}>Registration Form</h3>
             {Error && <p>Username or password incorrect!</p>}
-            <form onSubmit={submitHandler}>
+            <Form submit={submitHandler}>
               <Input
                 ref={emailInputRef}
                 id="email"
@@ -90,6 +98,7 @@ const Login = () => {
                 value={username}
                 onBlur={usernameBlurHandler}
                 onChange={usernameChangeHandler}
+                icon="fa-solid fa-envelope"
               />
               <Input
                 ref={passwordInputRef}
@@ -99,13 +108,14 @@ const Login = () => {
                 type="password"
                 value={password}
                 onChange={passwordChangeHandler}
+                icon="fa-solid fa-lock"
               />
               <div id={styles.btn}>
                 <Button type="submit" className={styles.btn}>
                   Login
                 </Button>
               </div>
-            </form>
+            </Form>
             <p>Don't have an Account? </p>
             <NavLink to={process.env.React_App_Register} id={styles.btn}>
               Sign Up

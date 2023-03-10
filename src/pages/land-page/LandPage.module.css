@@ -1,6 +1,6 @@
 .LandPage {
   min-height: 100vh;
-  background-image: url("../UI/Images/landingPage_bg.png");
+  background-image: url("../../Components/UI/Images/landingPage_bg.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;

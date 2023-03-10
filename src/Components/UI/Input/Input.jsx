@@ -49,7 +49,6 @@ export const Input = forwardRef((props, ref) => {
       <div>
         <div className={styles.ok}>
           <input
-            className={styles.input}
             ref={inputRef}
             name={props.name}
             id={props.id}
@@ -59,7 +58,7 @@ export const Input = forwardRef((props, ref) => {
             onBlur={props.onBlur}
             placeholder={props.placeholder}
           />
-          <i className="fa-solid fa-bars"></i>
+          <i className={props.icon}></i>
         </div>
         {props.hasError && <p>{props.message}</p>}
       </div>

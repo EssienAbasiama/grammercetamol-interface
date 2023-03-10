@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import style from "./Footer.module.css";
 import { FaWhatsapp, FaInstagram, FaTwitter, FaFacebook } from "react-icons/fa";
-import Card from "../UI/Card/Card";
-import Button from "../UI/Button/Button";
-import { Logo } from "../UI/constants";
+import Card from "../../UI/Card/Card";
+import Button from "../../UI/Button/Button";
+import { Logo } from "../../UI/constants";
 
 const google = "https://www.google.com";
 const Footer = (props) => {
