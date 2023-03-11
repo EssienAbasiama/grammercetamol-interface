@@ -3,10 +3,14 @@ import { useState } from "react";
 import NavBar from "../../Components/Template/NavBars/NavBar";
 import Input from "../../Components/UI/sub-components/Input";
 import Card from "../../Components/UI/Card/Card";
-
-import styles from "./contact.module.css";
 import Form from "../../Components/UI/Form/Form";
 import Button from "../../Components/UI/Button/Button";
+import ContactMessage from "../../Components/Template/Contact/contacts-message";
+import ContactInfos, {
+  ContactAddress,
+} from "../../Components/Template/Contact/contact-social";
+
+import styles from "./contact.module.css";
 
 const Contacts = () => {
   const [name, setName] = useState("");
@@ -16,16 +20,17 @@ const Contacts = () => {
   const nameChangeHandler = (event) => {
     setName(event.target.value);
   };
+
   const emailChangeHandler = (event) => {
     setEmail(event.target.value);
   };
+
   const textChangeHandler = (event) => {
     setText(event.target.value);
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-
     console.log(name, email, text);
   };
 
@@ -34,38 +39,40 @@ const Contacts = () => {
       <NavBar />
       <div className={styles.contact}>
         <div className={styles.contacts}>
-          <Card className={styles["contact-details"]}>
+          <ContactInfos className={styles["contact-details"]}>
             <h2>waht is your name</h2>
-            <div className={styles["contact-address"]}>
-              <i className="fa-sharp fa-solid fa-location-dot" />
-              <a href="s">
-                1, Badimu close, off Lagos-Abeokuta Expressway, pakistan
-                bus-stop, Dopemu lagos
-              </a>
-            </div>
-            <div className={styles["contact-address"]}>
-              <i className="fa-solid fa-envelope" />
-              <a href="mailto:horluwatosin@gmail.com">
-                Horluwatosin1999@gmail.com
-              </a>
-            </div>
-            <div className={styles["contact-address"]}>
-              <i className="fa-solid fa-phone" />
-              <a href="tel:+2348109604362">+2348109604362</a>
-            </div>
-            <div className={styles["contact-address"]}>
-              <i className="fa-brands fa-instagram" />
-              <a href="http://www.instagram.com/the_grammarcetamol_clinic">
-                the_grammarcetamol_clinic
-              </a>
-            </div>
-          </Card>
+            <ContactAddress
+              className={styles["contact-address"]}
+              icon="fa-sharp fa-solid fa-location-dot"
+              href="s"
+              anchorlink="1, Badimu close, off Lagos-Abeokuta Expressway, pakistan
+              bus-stop, Dopemu lagos"
+            />
+            <ContactAddress
+              className={styles["contact-address"]}
+              icon="fa-solid fa-envelope"
+              href="mailto:horluwatosin@gmail.com"
+              anchorlink="horluwatosin1999@gmail.com"
+            />
+            <ContactAddress
+              className={styles["contact-address"]}
+              icon="fa-solid fa-phone"
+              href="tel:+2348109604362"
+              anchorlink="+2348109604362"
+            />
+            <ContactAddress
+              className={styles["contact-address"]}
+              icon="fa-brands fa-instagram"
+              href="http://www.instagram.com/the_grammarcetamol_clinic"
+              anchorlink="the_grammarcetamol_clinic"
+            />
+          </ContactInfos>
           <div className={styles["get-in-touch"]}>
             <div>
               <p>get in touch</p>
               <p>feel free to drop us a line below</p>
             </div>
-            <div className={styles["get-message"]}>
+            <ContactMessage className={styles["get-message"]}>
               <Form submit={submitHandler}>
                 <Card className={styles["contact-input"]}>
                   <Input
@@ -100,7 +107,7 @@ const Contacts = () => {
                   </Button>
                 </div>
               </Form>
-            </div>
+            </ContactMessage>
           </div>
         </div>
       </div>

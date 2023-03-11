@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import Button from "../../UI/Button/Button";
 import { Logo } from "../../UI/constants";
-import { NavLink } from "react-router-dom";
+import Icons from "../../UI/Icons/Icons";
+import UL from "../../UI/Lists/Ulist";
+import Lists from "../../UI/Lists/Lists";
+
 import styles from "./NavBar.module.css";
-import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const [clicked, setClicked] = useState(false);
@@ -18,35 +22,37 @@ const NavBar = () => {
     ? `${styles.navmenu} ${styles.active}`
     : `${styles.navmenu}`;
 
+  const icons = clicked ? "fa-solid fa-xmark" : "fa-solid fa-bars";
   return (
     <nav className={styles.navitems}>
       <div className={styles.logo}>
         <img src={Logo} alt="" />
       </div>
       <div className={styles.hambuger} onClick={handleClick}>
-        <i className={clicked ? "fa-solid fa-xmark" : "fa-solid fa-bars"} />
+        <Icons icons={icons} />
       </div>
-      <ul className={isClicked}>
-        <li>
+
+      <UL className={isClicked}>
+        <Lists>
           <NavLink to={process.env.React_App_Home}>Home</NavLink>
-        </li>
-        <li>
+        </Lists>
+        <Lists>
           <NavLink to={process.env.React_App_About}>About Us</NavLink>
-        </li>
-        <li>
+        </Lists>
+        <Lists>
           <NavLink to={process.env.React_App_Courses}>Courses</NavLink>
-        </li>
-        <li>
+        </Lists>
+        <Lists>
           <NavLink to={process.env.React_App_Contact}>Contacts</NavLink>
-        </li>
+        </Lists>
         {!isLoggedIn && (
-          <li>
+          <Lists>
             <NavLink to={process.env.React_App_Register}>
               <Button className={styles.btn}>Sign Up</Button>
             </NavLink>
-          </li>
+          </Lists>
         )}
-      </ul>
+      </UL>
     </nav>
   );
 };

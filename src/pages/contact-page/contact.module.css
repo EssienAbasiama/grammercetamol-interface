@@ -63,6 +63,7 @@
 .get-in-touch div p {
   text-align: start;
   text-transform: capitalize;
+  padding-bottom: 0.3rem;
 }
 
 .get-message {
