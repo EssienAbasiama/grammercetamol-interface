@@ -1,12 +1,55 @@
-/* .each {
-  max-width: 20%;
-  background-color: yellow;
-} */
+.each {
+}
 
-/* .each img {
+.each img {
   max-width: 100%;
   width: 100%;
-} */
+  max-height: 300px;
+}
+
+.description {
+  width: 100%;
+  max-width: inherit;
+  word-wrap: break-word;
+  background-color: whitesmoke;
+  padding: 0 0.3rem;
+}
+.description h2 {
+  max-width: 100%;
+  font-size: 23px;
+  font-weight: bold;
+  color: black;
+  line-height: 19px;
+}
+
+.description__ {
+  display: flex;
+  width: 100%;
+}
+
+.description__ p {
+  color: black;
+  line-height: 19px;
+}
+
+.more-description {
+  padding: 1rem;
+  width: 50%;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time {
+  color: black;
+  padding: 0.5rem;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
 
 @media screen and (max-width: 400px) {
   .each {
