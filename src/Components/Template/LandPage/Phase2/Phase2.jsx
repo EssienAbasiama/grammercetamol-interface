@@ -1,6 +1,7 @@
 import React from "react";
+import { Teacher, Teacher4, Study, Smile } from "../../../UI/constants";
+
 import style from "./Phase2.module.css";
-import { Teacher, Teacher4, Study, Smile } from "../../UI/constants";
 
 const phase2 = [
   {
@@ -21,7 +22,7 @@ const phase2 = [
   },
 ];
 
-const Phase2 = (props) => {
+const Phase2 = () => {
   return (
     <>
       <div className={style.course}>

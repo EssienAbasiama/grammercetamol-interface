@@ -7,6 +7,7 @@ import RegistrationForm from "./pages/Registration/Registration";
 
 import style from "./App.module.css";
 import Contacts from "./pages/contact-page/Contacts";
+import CoursesPage from "./pages/courses-page/CoursePage";
 
 function App() {
   useEffect(() => {
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/register" element={<RegistrationForm />} />
           <Route exact path="/login" element={<LoginForm />} />
           <Route exact path="/contacts" element={<Contacts />} />
+          <Route exact path="/courses" element={<CoursesPage />} />
         </Routes>
       </Router>
     </div>

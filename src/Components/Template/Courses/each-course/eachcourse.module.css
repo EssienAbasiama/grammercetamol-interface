@@ -1,0 +1,21 @@
+/* .each {
+  max-width: 20%;
+  background-color: yellow;
+} */
+
+/* .each img {
+  max-width: 100%;
+  width: 100%;
+} */
+
+@media screen and (max-width: 400px) {
+  .each {
+    max-width: 100%;
+  }
+
+  .each img {
+    max-width: 100%;
+    width: 100%;
+    margin: auto;
+  }
+}

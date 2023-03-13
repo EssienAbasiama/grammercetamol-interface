@@ -6,7 +6,7 @@ import {
   Teacher3,
   Teacher5,
   Teacher_pupil,
-} from "../../UI/constants";
+} from "../../../UI/constants";
 
 const phase3 = [
   {
