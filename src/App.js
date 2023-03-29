@@ -1,14 +1,36 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import React, { useEffect } from "react";
 
 import LandPage from "./pages/land-page/LandPage";
 import LoginForm from "./pages/LoginForm/Login";
 import RegistrationForm from "./pages/Registration/Registration";
-
-import style from "./App.module.css";
 import Contacts from "./pages/contact-page/Contacts";
 import CoursesPage from "./pages/courses-page/CoursePage";
 import AboutUsPage from "./pages/about-us/About-Us_Page";
+import RootLayout from "./pages/Root";
+
+import style from "./App.module.css";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { path: "/", element: <LandPage /> },
+      { path: "/contacts", element: <Contacts /> },
+      { path: "/about-us", element: <AboutUsPage /> },
+      { path: "/courses", element: <CoursesPage /> },
+    ],
+  },
+  {
+    path: "/register",
+    element: <RegistrationForm />,
+  },
+  {
+    path: "/login",
+    element: <LoginForm />,
+  },
+]);
 
 function App() {
   useEffect(() => {
@@ -20,16 +42,7 @@ function App() {
 
   return (
     <div className={style.all}>
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<LandPage />} />
-          <Route exact path="/register" element={<RegistrationForm />} />
-          <Route exact path="/login" element={<LoginForm />} />
-          <Route exact path="/contacts" element={<Contacts />} />
-          <Route exact path="/courses" element={<CoursesPage />} />
-          <Route exact path="/about-us" element={<AboutUsPage />} />
-        </Routes>
-      </Router>
+      <RouterProvider router={router} />
     </div>
   );
 }

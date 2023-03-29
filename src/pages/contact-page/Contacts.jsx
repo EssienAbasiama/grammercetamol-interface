@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import NavBar from "../../Components/Template/NavBars/NavBar";
 import Input from "../../Components/UI/sub-components/Input";
 import Card from "../../Components/UI/Card/Card";
 import Form from "../../Components/UI/Form/Form";
@@ -36,7 +35,6 @@ const Contacts = () => {
 
   return (
     <section className={styles.section}>
-      <NavBar />
       <div className={styles.contact}>
         <div className={styles.contacts}>
           <ContactInfos className={styles["contact-details"]}>
