@@ -10,13 +10,15 @@ import AboutUsPage from "./pages/about-us/About-Us_Page";
 import RootLayout from "./pages/Root";
 
 import style from "./App.module.css";
+import Error from "./pages/errors/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <Error />,
     children: [
-      { path: "/", element: <LandPage /> },
+      { index: true, element: <LandPage /> },
       { path: "/contacts", element: <Contacts /> },
       { path: "/about-us", element: <AboutUsPage /> },
       { path: "/courses", element: <CoursesPage /> },

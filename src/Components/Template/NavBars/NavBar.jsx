@@ -34,16 +34,40 @@ const NavBar = () => {
 
       <UL className={isClicked}>
         <Lists>
-          <NavLink to={process.env.React_App_Home}>Home</NavLink>
+          <NavLink
+            to={process.env.React_App_Home}
+            className={({ isActive }) => (isActive ? styles.active : undefined)}
+            end
+          >
+            Home
+          </NavLink>
         </Lists>
         <Lists>
-          <NavLink to={process.env.React_App_About}>About Us</NavLink>
+          <NavLink
+            to={process.env.React_App_About}
+            className={({ isActive }) => (isActive ? styles.active : undefined)}
+            end
+          >
+            About Us
+          </NavLink>
         </Lists>
         <Lists>
-          <NavLink to={process.env.React_App_Courses}>Courses</NavLink>
+          <NavLink
+            to={process.env.React_App_Courses}
+            className={({ isActive }) => (isActive ? styles.active : undefined)}
+            end
+          >
+            Courses
+          </NavLink>
         </Lists>
         <Lists>
-          <NavLink to={process.env.React_App_Contact}>Contacts</NavLink>
+          <NavLink
+            to={process.env.React_App_Contact}
+            className={({ isActive }) => (isActive ? styles.active : undefined)}
+            end
+          >
+            Contacts
+          </NavLink>
         </Lists>
         {!isLoggedIn && (
           <Lists>

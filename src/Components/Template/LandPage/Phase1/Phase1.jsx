@@ -1,7 +1,8 @@
 import React from "react";
 import Button from "../../../UI/Button/Button";
-import styles from "./Phase1.module.css";
 import { Microphone } from "../../../UI/constants";
+
+import styles from "./Phase1.module.css";
 
 const Phase1 = () => {
   return (
