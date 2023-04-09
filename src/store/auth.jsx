@@ -3,18 +3,24 @@ import { createSlice } from "@reduxjs/toolkit";
 const authSlice = createSlice({
   name: "auth",
   initialState: {
+    id: "",
     firstname: "",
     lastname: "",
+    othername: "",
     authorizationToken: "",
+    refreshToken: "",
     roles: [],
     isLoggedIn: false,
   },
   reducers: {
     loggin(state, action) {
       const details = action.payload;
+      state.id = details.id;
       state.firstname = details.firstname;
       state.lastname = details.lastname;
-      state.authorizationToken = details.jwt;
+      state.othername = details.othername;
+      state.authorizationToken = details.token;
+      state.refreshToken = details.reefreshToken;
       state.roles.push(details.roles);
       state.isLoggedIn = true;
       localStorage.setItem("jwt", details.jwt);

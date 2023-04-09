@@ -49,7 +49,6 @@ export const Input = forwardRef((props, ref) => {
       <div>
         <div className={styles.ok}>
           <input
-            ref={inputRef}
             name={props.name}
             id={props.id}
             type={props.type}
@@ -57,10 +56,13 @@ export const Input = forwardRef((props, ref) => {
             onChange={props.onChange}
             onBlur={props.onBlur}
             placeholder={props.placeholder}
+            required={props.required}
           />
           <i className={props.icon}></i>
         </div>
-        {props.hasError && <p>{props.message}</p>}
+        {props.hasError && (
+          <p style={{ color: "red", textAlign: "center" }}>{props.message}</p>
+        )}
       </div>
     </>
   );

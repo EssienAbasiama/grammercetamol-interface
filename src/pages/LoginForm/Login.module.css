@@ -25,6 +25,11 @@
   width: 50%;
 }
 
+.form p {
+  color: rgb(169, 52, 52);
+  text-align: center;
+}
+
 .form_ form {
   margin-bottom: 9rem;
 }

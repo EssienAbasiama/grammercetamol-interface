@@ -24,6 +24,10 @@
 .form {
   width: 50%;
 }
+.form p {
+  color: rgb(182, 47, 47);
+  text-align: center;
+}
 
 #btn {
   display: flex;

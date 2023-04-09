@@ -1,20 +1,30 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import {
+  Form,
+  Link,
+  NavLink,
+  json,
+  redirect,
+  useActionData,
+  useNavigation,
+} from "react-router-dom";
 
-import { sendRequest, useInput } from "../../hooks/custome-hooks";
+import { useInput } from "../../hooks/custome-hooks";
 import Button from "../../Components/UI/Button/Button";
 import { Logo } from "../../Components/UI/constants";
 import { Input } from "../../Components/UI/Input/Input";
 
 import styles from "./register.module.css";
-import Form from "../../Components/UI/Form/Form";
 
 const notEmpty = (evt) => evt.trim() !== "";
 const pass = (evt) => evt.trim() !== "" && evt.length > 6;
 
 const Registration = () => {
+  const error = useActionData();
+  const navigate = useNavigation();
   const [formValidity, setFormValidity] = useState(false);
-  const navigate = useNavigate();
+
+  const isSubmitting = navigate.state === "submitting";
 
   const {
     value: firstname,
@@ -22,7 +32,6 @@ const Registration = () => {
     hasError: firstnameHasError,
     valueChangeHandler: firstnameChangeHandler,
     inputBlurHandler: firstnameBlurHandler,
-    reset: firstnameReset,
   } = useInput(notEmpty);
 
   const {
@@ -31,7 +40,6 @@ const Registration = () => {
     hasError: lastnameHasError,
     valueChangeHandler: lastnameChangeHandler,
     inputBlurHandler: lastnameBlurHandler,
-    reset: lastnameReset,
   } = useInput(notEmpty);
 
   const {
@@ -40,7 +48,6 @@ const Registration = () => {
     hasError: othernameHasError,
     valueChangeHandler: othernameChangeHandler,
     inputBlurHandler: othernameBlurHandler,
-    reset: othernameReset,
   } = useInput(notEmpty);
 
   const {
@@ -49,7 +56,13 @@ const Registration = () => {
     hasError: emailHasError,
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
-    reset: emailReset,
+  } = useInput(notEmpty);
+  const {
+    value: number,
+    isValid: numberIsValid,
+    hasError: numberHasError,
+    valueChangeHandler: numberChangeHandler,
+    inputBlurHandler: numberBlurHandler,
   } = useInput(notEmpty);
 
   const {
@@ -58,7 +71,6 @@ const Registration = () => {
     hasError: passwordHasError,
     valueChangeHandler: passwordChangeHandler,
     inputBlurHandler: passwordBlurHandler,
-    reset: passwordReset,
   } = useInput(pass);
 
   const valid =
@@ -66,32 +78,15 @@ const Registration = () => {
     lastnameIsValid &&
     othernameIsValid &&
     emailIsValid &&
+    numberIsValid &&
     passwordIsValid;
 
   useEffect(() => {
-    const time = setTimeout(() => {
-      setFormValidity(valid);
-    }, 500);
-    return () => {
-      clearTimeout(time);
-    };
+    setFormValidity(valid);
   }, [valid]);
 
-  const submitHandler = async (event) => {
-    event.preventDefault();
-    console.log(firstname, lastname, othername, email, password);
-    if (formValidity) {
-      try {
-        const response = await sendRequest({});
-      } catch (err) {}
-      firstnameReset();
-      lastnameReset();
-      othernameReset();
-      emailReset();
-      passwordReset();
-      navigate("/login");
-    }
-  };
+  const able = isSubmitting || !formValidity;
+
   return (
     <section className={styles.section}>
       <div className={styles.center}>
@@ -101,7 +96,8 @@ const Registration = () => {
               <img src={Logo} alt="" className={styles.logo} />
             </Link>
             <h3 className={styles.h3}>Registration Form</h3>
-            <Form submit={submitHandler}>
+            <Form method="post">
+              {error && <p>{error.message}</p>}
               <Input
                 id="firstname"
                 name="firstname"
@@ -113,6 +109,7 @@ const Registration = () => {
                 hasError={firstnameHasError}
                 message="space cannot be empty"
                 icon="fa-solid fa-user"
+                required
               />
               <Input
                 id="lastname"
@@ -125,6 +122,7 @@ const Registration = () => {
                 hasError={lastnameHasError}
                 message="space cannot be empty"
                 icon="fa-solid fa-user"
+                required
               />
               <Input
                 id="othername"
@@ -137,6 +135,7 @@ const Registration = () => {
                 hasError={othernameHasError}
                 message="space cannot be empty"
                 icon="fa-solid fa-user"
+                required
               />
               <Input
                 id="e-mail"
@@ -149,6 +148,20 @@ const Registration = () => {
                 hasError={emailHasError}
                 message="space cannot be empty"
                 icon="fa-solid fa-envelope"
+                required
+              />
+              <Input
+                id="phonenumber"
+                name="number"
+                label="phonenubmer"
+                type="text"
+                value={number}
+                onBlur={numberBlurHandler}
+                onChange={numberChangeHandler}
+                hasError={numberHasError}
+                message="space cannot be empty"
+                icon="fa-solid fa-phone"
+                required
               />
               <Input
                 id="Password"
@@ -161,9 +174,10 @@ const Registration = () => {
                 hasError={passwordHasError}
                 message="your password must be longer than 6 digits"
                 icon="fa-solid fa-lock"
+                required
               />
               <div id={styles.btn}>
-                <Button type="submit" className={styles.btn}>
+                <Button type="submit" className={styles.btn} disabled={able}>
                   Submit
                 </Button>
               </div>
@@ -179,5 +193,46 @@ const Registration = () => {
     </section>
   );
 };
-
 export default Registration;
+
+export async function action({ request, params }) {
+  const data = await request.formData();
+
+  if (
+    data.get("firstname") === "" ||
+    data.get("lastname") === "" ||
+    data.get("othername") === "" ||
+    data.get("email") === "" ||
+    data.get("number") === "" ||
+    data.get("password") === ""
+  ) {
+    return json({ message: "one of the input space is empty" });
+  }
+  const eventData = {
+    firstname: data.get("firstname"),
+    lastname: data.get("lastname"),
+    othername: data.get("othername"),
+    email: data.get("email"),
+    phoneNumber: data.get("number"),
+    password: data.get("password"),
+    role: "STUDENT",
+  };
+  const response = await fetch("http://localhost:8023/api/auth/signIn", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(eventData),
+  });
+
+  if (response.status === 401 || 400) {
+    const res = await response.json();
+    return json({ message: res.message }, { status: 401 });
+  }
+
+  if (!response.ok) {
+    throw json({ message: "Could not save event." });
+  }
+
+  return redirect("/");
+}

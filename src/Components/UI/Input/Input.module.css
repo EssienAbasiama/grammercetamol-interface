@@ -6,6 +6,10 @@
   align-items: baseline;
 }
 
+.ok p {
+  color: black;
+}
+
 .ok input {
   color: black;
   background-color: rgb(255, 255, 255);

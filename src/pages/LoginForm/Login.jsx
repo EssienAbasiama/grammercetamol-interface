@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, redirect, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { sendRequest, useInput } from "../../hooks/custome-hooks";
@@ -15,6 +15,7 @@ import styles from "./Login.module.css";
 const Login = () => {
   const [Error, setError] = useState(false);
   const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -47,11 +48,11 @@ const Login = () => {
       try {
         setError(false);
         const data = await sendRequest({
-          url: process.env.React_App_Login_Api,
+          url: "http://localhost:8023/api/auth/login",
           method: process.env.React_App_Request_PMethod,
           headers: { "Content-Type": "application/json" },
           body: {
-            username: username,
+            email: username,
             password: password,
           },
         });
@@ -68,7 +69,8 @@ const Login = () => {
 
         usernameReset();
         passwordReset();
-        navigate(process.env.React_App_Home);
+        redirect("/");
+        // navigate(process.env.React_App_Home);
       } catch (err) {
         console.error(err.message);
         setError(true);

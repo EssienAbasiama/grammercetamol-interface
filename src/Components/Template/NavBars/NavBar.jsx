@@ -35,7 +35,7 @@ const NavBar = () => {
       <UL className={isClicked}>
         <Lists>
           <NavLink
-            to={process.env.React_App_Home}
+            to="/"
             className={({ isActive }) => (isActive ? styles.active : undefined)}
             end
           >
@@ -44,7 +44,7 @@ const NavBar = () => {
         </Lists>
         <Lists>
           <NavLink
-            to={process.env.React_App_About}
+            to="about-us"
             className={({ isActive }) => (isActive ? styles.active : undefined)}
             end
           >
@@ -53,7 +53,7 @@ const NavBar = () => {
         </Lists>
         <Lists>
           <NavLink
-            to={process.env.React_App_Courses}
+            to="courses"
             className={({ isActive }) => (isActive ? styles.active : undefined)}
             end
           >
@@ -62,7 +62,7 @@ const NavBar = () => {
         </Lists>
         <Lists>
           <NavLink
-            to={process.env.React_App_Contact}
+            to="contacts"
             className={({ isActive }) => (isActive ? styles.active : undefined)}
             end
           >
