@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// const fetchById = createAsyncThunk("", async () => {
+//   const response = await fetch("", {});
+//   return response.data;
+// });
+
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -20,12 +25,9 @@ const authSlice = createSlice({
       state.lastname = details.lastname;
       state.othername = details.othername;
       state.authorizationToken = details.token;
-      state.refreshToken = details.reefreshToken;
+      state.refreshToken = details.refreshToken;
       state.roles.push(details.roles);
       state.isLoggedIn = true;
-      localStorage.setItem("jwt", details.jwt);
-      localStorage.setItem("loggedIn", "true");
-      console.log(state.roles);
     },
     logout(state, action) {
       state.isLoggedIn = false;

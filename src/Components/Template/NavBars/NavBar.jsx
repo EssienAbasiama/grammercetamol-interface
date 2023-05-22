@@ -31,7 +31,6 @@ const NavBar = () => {
       <div className={styles.hambuger} onClick={handleClick}>
         <Icons icons={icons} />
       </div>
-
       <UL className={isClicked}>
         <Lists>
           <NavLink
@@ -69,13 +68,17 @@ const NavBar = () => {
             Contacts
           </NavLink>
         </Lists>
-        {!isLoggedIn && (
-          <Lists>
+        <Lists>
+          {!isLoggedIn ? (
             <NavLink to={process.env.React_App_Register}>
               <Button className={styles.btn}>Sign Up</Button>
             </NavLink>
-          </Lists>
-        )}
+          ) : (
+            <NavLink to={process.env.React_App_Register}>
+              <Button className={styles.btn}>My Profile</Button>
+            </NavLink>
+          )}
+        </Lists>
       </UL>
     </nav>
   );

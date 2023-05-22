@@ -82,6 +82,7 @@ export async function action({ request, params }) {
     username: data.get("username"),
     password: data.get("password"),
   };
+
   const response = await fetch("http://localhost:8023/api/auth/login", {
     method: "POST",
     headers: {

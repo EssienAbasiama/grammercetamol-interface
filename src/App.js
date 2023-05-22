@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import LandPage from "./pages/land-page/LandPage";
-import LoginForm, { action as loginAction } from "./pages/LoginForm/Login2";
+import { action as loginAction } from "./pages/LoginForm/Login2";
 import RegistrationForm, {
   action as registerAction,
 } from "./pages/Registration/Registration";
@@ -13,6 +13,9 @@ import RootLayout from "./pages/Root";
 
 import style from "./App.module.css";
 import Error from "./pages/errors/ErrorPage";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import LoginPage from "./pages/LoginForm/LoginPage";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/login",
         id: "login",
-        element: <LoginForm />,
+        element: <LoginPage />,
         action: loginAction,
       },
     ],
@@ -47,7 +50,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className={style.all}>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </div>
   );
 }

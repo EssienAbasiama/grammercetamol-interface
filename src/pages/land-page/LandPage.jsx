@@ -1,14 +1,8 @@
-import React from "react";
-import { useSelector } from "react-redux";
-
 import Phase1 from "../../Components/Template/LandPage/Phase1/Phase1";
 import Phase2 from "../../Components/Template/LandPage/Phase2/Phase2";
 import Phase3 from "../../Components/Template/LandPage/Phase3/Phase3";
 
 const LandPage = (props) => {
-  const roles = useSelector((state) => state.auth.roles);
-  console.log(roles);
-
   return (
     <>
       <Phase1 />
