@@ -70,7 +70,7 @@ const NavBar = () => {
         </Lists>
         <Lists>
           {!isLoggedIn ? (
-            <NavLink to={process.env.React_App_Register}>
+            <NavLink to={process.env.React_App_Login}>
               <Button className={styles.btn}>Sign Up</Button>
             </NavLink>
           ) : (
