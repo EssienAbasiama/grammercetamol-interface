@@ -3,7 +3,7 @@ import { Link, NavLink, redirect, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { sendRequest, useInput } from "../../hooks/custome-hooks";
-import { authActions } from "../../store/auth";
+import { authActions } from "../../../store/auth";
 import { Input } from "../../Components/UI/Input/Input";
 import { Logo } from "../../Components/UI/constants";
 

@@ -2,6 +2,10 @@
   position: relative;
   width: 90vw;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 10px;
 }
 
 .courses h2 {
@@ -10,6 +14,16 @@
 }
 
 .each-course {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.each-course1 {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;

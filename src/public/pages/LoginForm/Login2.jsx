@@ -7,7 +7,7 @@ import {
   useNavigation,
 } from "react-router-dom";
 
-import { responseData } from "../../store/storage";
+import { responseData } from "../../../store/storage";
 import { Input } from "../../Components/UI/Input/Input";
 import { Logo } from "../../Components/UI/constants";
 import Button from "../../Components/UI/Button/Button";

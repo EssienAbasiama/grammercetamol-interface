@@ -39,4 +39,26 @@ const authSlice = createSlice({
 });
 
 export const authActions = authSlice.actions;
-export default authSlice;
+export const authSlice1 = authSlice.reducer;
+
+const adminSlice = createSlice({
+  name: "adminAuth",
+  initialState: {
+    id: "",
+    firstname: "",
+    lastname: "",
+    othername: "",
+    authorizationToken: "",
+    refreshToken: "",
+    roles: [],
+    isLoggedIn: false,
+  },
+  reducers: {
+    loggin(state, action) {
+      const details = action.payload;
+    },
+  },
+});
+
+export const adminAuthAction = adminSlice.actions;
+export const adminSlice1 = adminSlice.reducer;
