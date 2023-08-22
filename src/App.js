@@ -1,27 +1,24 @@
-import React from "react";
+import React, { lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import LandPage from "./public/pages/land-page/LandPage";
-import RegistrationForm, {
-  action as registerAction,
-} from "./public/pages/Registration/Registration";
-import Contacts from "./public/pages/contact-page/Contacts";
-import CoursesPage, {
-  loader as loadCourses,
-} from "./public/pages/courses-page/CoursePage";
-import AboutUsPage from "./public/pages/about-us/About-Us_Page";
 import RootLayout from "./public/pages/Root";
 import Error from "./public/pages/errors/ErrorPage";
-import LoginPage from "./public/pages/LoginForm/LoginPage";
-import WatchVideo from "./public/Components/Template/Courses/Videos/WatchVideo";
-import Uploads from "./admin/pages/Uploads";
 
 import store from "./store/store";
 
-import { action as loginAction } from "./public/pages/LoginForm/Login2";
 import style from "./App.module.css";
 
+const LandPage = lazy(() => import("./public/pages/land-page/LandPage"));
+const Contacts = lazy(() => import("./public/pages/contact-page/Contacts"));
+const AboutUsPage = lazy(() => import("./public/pages/about-us/About-Us_Page"));
+const CoursePage = lazy(() => import("./public/pages/courses-page/CoursePage"));
+const LoginPage = lazy(() => import("./public/pages/LoginForm/LoginPage"));
+
+const Register = lazy(() => import("./public/pages/Registration/Registration"));
+const DetailsPage = lazy(() =>
+  import("./public/pages/DetailCourse/DetailCoursePage")
+);
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,11 +34,14 @@ const router = createBrowserRouter([
           {
             path: "courses",
             id: "loadcourses",
-            loader: loadCourses,
+            // loader: loadCourses,
+            loader: () =>
+              import("./public/pages/courses-page/CoursePage").then((module) =>
+                module.loader()
+              ),
             children: [
-              { index: true, element: <CoursesPage /> },
-
-              { path: "my-course/:courseId" },
+              { index: true, element: <CoursePage /> },
+              { path: ":courseId", element: <DetailsPage /> },
               // { path: "watch/:courseId", element: <WatchVideo /> },
               {},
               {},
@@ -52,19 +52,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <RegistrationForm />,
-        action: registerAction,
+        element: <Register />,
+        action: (meta) =>
+          import("./public/pages/Registration/Registration").then((module) =>
+            module.action(meta)
+          ),
       },
       {
         path: "/login",
         id: "login",
         element: <LoginPage />,
-        action: loginAction,
-      },
-
-      {
-        path: "/upload",
-        element: <Uploads />,
+        action: (meta) =>
+          import("./public/pages/LoginForm/Login2").then((module) =>
+            module.action(meta)
+          ),
       },
     ],
   },

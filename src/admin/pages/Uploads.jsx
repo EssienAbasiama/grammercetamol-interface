@@ -21,13 +21,10 @@ function Uploads() {
     for (let i = 0; i < files.length; i++) {
       formData.append("file", files[i]);
     }
-    const response = await fetch(
-      "http://localhost:8023/api/cloudinary/upload",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const response = await fetch("http://localhost:9000/api/courses/upload", {
+      method: "POST",
+      body: formData,
+    });
   }
 
   function onDragOver(events) {
