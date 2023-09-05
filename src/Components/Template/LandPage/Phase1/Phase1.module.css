@@ -79,7 +79,59 @@ span {
     left: -20px
 }
 
-@media screen and (max-width: 500px) {
+@media (max-width: 1192px) {
+    .explain p {
+        font-size: 1.6rem;
+        line-height: 1.8rem;
+        text-align: left;
+    }
+    .button {
+        margin-top: 30px;
+    }
+    .title_text_container {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 1163px) {
+    .explain p {
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        text-align: left;
+    }
+}
+
+@media (max-width: 1133px) {
+    * {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 1108px) {
+    .explain p {
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        text-align: left;
+    }
+}
+
+@media (max-width: 1084px) {
+    .clinic {
+        padding-right: 0px;
+    }
+}
+
+@media (max-width: 1036px) {
+    .grammercetamol_clinic h2 {
+        font-size: 1rem;
+    }
+    .explain p {
+        font-size: 1.3rem;
+        font-weight: bolder;
+    }
+}
+
+@media (max-width: 500px) {
     .clinic {
         flex-direction: column;
     }
@@ -93,6 +145,3 @@ span {
         padding-top: 2rem;
     }
 }
-
-
-/* @media screen and (max-width: ) */
