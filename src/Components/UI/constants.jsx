@@ -6,6 +6,7 @@ export const Teacher4 = require("../UI/Images/teacher4.png");
 export const Teacher5 = require("../UI/Images/teacher5.png");
 export const Teacher_pupil = require("../UI/Images/teacher_pupil.png");
 export const Microphone = require("../UI/Images/microphone.png");
+// export const Microphone = require("../UI/Images/microphone.jpeg");
 export const Study = require("../UI/Images/study.png");
 export const Logo = require("../UI/Images/logo.png");
 export const LandingPage_bg = require("../UI/Images/landingPage_bg.png");

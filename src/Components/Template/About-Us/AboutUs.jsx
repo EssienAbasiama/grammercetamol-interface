@@ -9,13 +9,13 @@ const AboutUs = () => {
     <div className={styles.aboutcontain}>
       <div className={styles.book}></div>
       <div className={styles["about"]}>
-        <div className={styles["about-1"]}>
+        {/* <div className={styles["about-1"]}>
           <h3>About</h3>
           <p>
             Achievening Excellence <br />
             Together
           </p>
-        </div>
+        </div> */}
         <div className={styles["about-2"]}>
           <div className={styles["about-2-1"]}>
             <div className={styles["about-2-1-1"]}>

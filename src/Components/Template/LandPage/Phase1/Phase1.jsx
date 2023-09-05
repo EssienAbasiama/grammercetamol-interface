@@ -3,6 +3,7 @@ import Button from "../../../UI/Button/Button";
 import { Microphone } from "../../../UI/constants";
 
 import styles from "./Phase1.module.css";
+import "./Phase1.module.css"
 
 const Phase1 = () => {
   return (
@@ -10,7 +11,7 @@ const Phase1 = () => {
       <div className={styles.clinic}>
         <div className={styles.clinic__}>
           <div className={styles.grammercetamol_clinic}>
-            <h2>The grammcetamol Clinic</h2>
+            <h2>THE GRAMMCETAMOL CLINIC</h2>
           </div>
           <div className={styles.explain}>
             <p>
@@ -18,11 +19,17 @@ const Phase1 = () => {
               AND STUNNING <span>DICTION</span>
             </p>
           </div>
+          <div className={styles.title_text_container}>
+            <p className={styles.title_text_container_p}>Discover the Secrets to fat fluency,boost your word power<br></br>
+              and improve your pronunciation
+            </p>
+          </div>
           <Button className={styles.button}>Get Started</Button>
         </div>
-        <div className={styles.microphone}>
-          <img src={Microphone} alt=""></img>
-        </div>
+        <img className={styles.image} src={Microphone} alt=""></img>
+        {/* <div className={styles.microphone}>
+          
+        </div> */}
       </div>
     </>
   );

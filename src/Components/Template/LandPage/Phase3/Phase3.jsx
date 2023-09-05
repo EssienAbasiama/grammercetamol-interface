@@ -38,12 +38,25 @@ const Phase3 = (props) => {
         <div className={style.other_courses_title}>
           <h2>Check out the free english learning tips</h2>
         </div>
-        <div className={style.other_courses_contents}>
+        <div className={style.grid_container}>
           {phase3.map((courses) => (
-            <div key={courses.id} className={style.other_courses_contents_}>
-              <div className={style.other_courses_contents_img}>
+            <div key={courses.id} className={style.grid_item}>
+              {/* <div className={style.other_courses_contents_img}>
                 <img src={courses.images} alt="" />
-              </div>
+              </div> */}
+              {/* style.other_courses_contents_img */}
+              <div
+                    // className={}
+                    style={{
+                      backgroundImage: `url(${courses.images})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      width: "370px",
+                      height: "200px",
+                      borderRadius: "10px",
+                    }}
+                  ></div>
               <div className={style.other_courses_contents_details}>
                 <p>what is going to happen now</p>
               </div>

@@ -32,9 +32,21 @@ const Phase2 = () => {
         <div className={style.course_contents}>
           {phase2.map((course) => (
             <div key={course.id} className={style.course_contents_}>
-              <div className={style.course_image}>
+              {/* <div className={style.course_image} >
                 <img src={course.images} alt="" />
-              </div>
+              </div> */}
+              <div
+                    className={style.course_image}
+                    style={{
+                      backgroundImage: `url(${course.images})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      width: "400px",
+                      height: "200px",
+                      borderRadius: "10px",
+                    }}
+                  ></div>
               <div className={style.course_entails}>
                 <p>
                   Diction and English FLuency Course <br />7 courses

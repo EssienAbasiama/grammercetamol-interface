@@ -38,7 +38,7 @@ const Contacts = () => {
       <div className={styles.contact}>
         <div className={styles.contacts}>
           <ContactInfos className={styles["contact-details"]}>
-            <h2>waht is your name</h2>
+            <h2>What's your name</h2>
             <ContactAddress
               className={styles["contact-address"]}
               icon="fa-sharp fa-solid fa-location-dot"
@@ -67,8 +67,8 @@ const Contacts = () => {
           </ContactInfos>
           <div className={styles["get-in-touch"]}>
             <div>
-              <p>get in touch</p>
-              <p>feel free to drop us a line below</p>
+              <p className={styles.getInTouch}>get in touch</p>
+              <p className={styles.getInTouch_Support_Text}>feel free to drop us a line below</p>
             </div>
             <ContactMessage className={styles["get-message"]}>
               <Form submit={submitHandler}>
@@ -96,7 +96,7 @@ const Contacts = () => {
                     value={text}
                     onChange={textChangeHandler}
                     type="text"
-                    placeholder="Yout Text"
+                    placeholder="Your Text"
                   />
                 </Card>
                 <div className={styles["btn-actions"]}>

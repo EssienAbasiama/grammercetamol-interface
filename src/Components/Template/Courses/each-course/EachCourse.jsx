@@ -6,19 +6,26 @@ import styles from "./eachcourse.module.css";
 const EachCourse = (props) => {
   return (
     <div className={styles.each}>
-      <div>
-        <img src={Img} alt="" />
-        <div className={styles["description"]}>
-          <h2>Technical English For Beginner</h2>
-          <div className={styles["description__"]}>
-            <div className={styles["more-description"]}>
-              <Icons icons="fa-solid fa-layer-group" />
-              <p>12 Lesson</p>
-            </div>
-            <div className={styles["time"]}>
-              <Icons icons="fa-regular fa-clock" />
-              <p>2 hr 40 mins</p>
-            </div>
+    
+      <div className={styles.grid_item}>
+        <div
+          className={styles.each_course_image}
+          style={{
+            backgroundImage: `url(${Img})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            width: "400px",
+            height: "200px",
+            position:"relative",
+            borderRadius: "10px 10px 0px 0px",
+          }}
+        ></div>
+        <div className={styles.eachcourse_container_info}>
+          <div>Technical English for Beginners</div>
+          <div className={styles.info_details}>
+            <p className={styles.course_stack}>12 Lessons</p>
+            <p className={styles.course_time}>2hrs 45min</p>
           </div>
         </div>
       </div>

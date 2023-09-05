@@ -70,15 +70,21 @@ const NavBar = () => {
         </Lists>
         <Lists>
           {!isLoggedIn ? (
-            <NavLink to={process.env.React_App_Register}>
-              <Button className={styles.btn}>Sign Up</Button>
+            <NavLink
+            to={process.env.React_App_Login}
+            className={({ isActive }) => (isActive ? styles.active : undefined)}
+            end
+          >
+            Sign In
             </NavLink>
           ) : (
-            <NavLink to={process.env.React_App_Register}>
+            <NavLink to={process.env.React_App_Login}>
               <Button className={styles.btn}>My Profile</Button>
             </NavLink>
           )}
         </Lists>
+        <Button className={styles.btn}>What do you want to learn?</Button>
+
       </UL>
     </nav>
   );

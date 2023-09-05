@@ -6,18 +6,18 @@ const Courses = () => {
   return (
     <div className={styles.courses}>
       <h2>Explore Courses</h2>
-      <div className={styles["each-course"]}>
-        <EachCourse />
-        <EachCourse />
-        <EachCourse />
-        <EachCourse />
-        <EachCourse />
-        <EachCourse />
-        <EachCourse />
-        <EachCourse />
-        <EachCourse />
-        <EachCourse />
-        <EachCourse />
+      <div className={styles.grid_container}>
+        <EachCourse /> 
+        <EachCourse /> 
+        <EachCourse /> 
+        <EachCourse /> 
+        <EachCourse /> 
+        <EachCourse /> 
+        <EachCourse /> 
+        <EachCourse /> 
+        <EachCourse /> 
+        <EachCourse /> 
+        <EachCourse /> 
       </div>
     </div>
   );

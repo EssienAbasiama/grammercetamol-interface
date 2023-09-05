@@ -12,6 +12,7 @@ import { Input } from "../../Components/UI/Input/Input";
 import { Logo } from "../../Components/UI/constants";
 import Button from "../../Components/UI/Button/Button";
 import styles from "./Login.module.css";
+import { Microphone } from "../../Components/UI/constants";
 
 const Login2 = () => {
   const error = useActionData();
@@ -27,7 +28,12 @@ const Login2 = () => {
               <img src={Logo} alt="" className={styles.logo} />
             </Link>
 
-            <h3 className={styles.h3}>Registration Form</h3>
+            <h3 className={styles.h3}>SIGN IN</h3>
+            <h3 className={styles.h4}>SignIn to Continue Your Application</h3>
+            {/* <div>
+              <p>SignIn</p>
+              <p>SignIn to Continue Your Application</p>
+            </div> */}
             <Form method="post">
               {error && <p>{error.message}</p>}
               <Input
@@ -36,6 +42,7 @@ const Login2 = () => {
                 label="E-mail"
                 type="text"
                 icon="fa-solid fa-envelope"
+                placeholder="Email"
                 required
               />
               <Input
@@ -44,6 +51,7 @@ const Login2 = () => {
                 label="Password"
                 type="password"
                 icon="fa-solid fa-lock"
+                placeholder="Password"
                 required
               />
               <div id={styles.btn}>
@@ -56,13 +64,16 @@ const Login2 = () => {
                 </Button>
               </div>
             </Form>
-            <p>Don't have an Account? </p>
-            <Link to={process.env.React_App_Register} id={styles.btn}>
-              Sign Up
+            <Link to={process.env.React_App_Register} id={styles.forgot_password}>
+              Forgot Password? 
             </Link>
+            <p>Don't have an Account? <Link to={process.env.React_App_Register} id={styles.signup}>
+              Sign Up
+            </Link></p>
           </div>
         </div>
         <div className={styles.form__}></div>
+        <img className={styles.microphone} src={Microphone} alt="" />
       </div>
     </section>
   );

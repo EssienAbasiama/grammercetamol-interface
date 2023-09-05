@@ -1,61 +1,108 @@
 .each img {
-  max-width: 100%;
-  width: 100%;
-  max-height: 300px;
+    max-width: 100%;
+    width: 100%;
+    max-height: 300px;
+}
+
+.each {
+    cursor: pointer;
+    transition: .3s;
+}
+
+.each:hover {
+    /* outline: 8px solid rgb(146, 138, 138);
+    outline-offset: 14px; */
+    border-radius: 10px;
+    transform: scale(1.05);
 }
 
 .description {
-  width: 100%;
-  max-width: inherit;
-  word-wrap: break-word;
-  background-color: whitesmoke;
-  padding: 0 0.3rem;
+    width: 100%;
+    max-width: inherit;
+    word-wrap: break-word;
+    background-color: whitesmoke;
+    padding: 0 0.3rem;
 }
+
 .description h2 {
-  max-width: 100%;
-  font-size: 23px;
-  font-weight: bold;
-  color: black;
-  line-height: 19px;
+    max-width: 100%;
+    font-size: 23px;
+    font-weight: bold;
+    color: black;
+    line-height: 19px;
 }
 
 .description__ {
-  display: flex;
-  width: 100%;
+    display: flex;
+    width: 100%;
 }
 
 .description__ p {
-  color: black;
-  line-height: 19px;
+    color: black;
+    line-height: 19px;
 }
 
 .more-description {
-  padding: 1rem;
-  width: 50%;
-  display: flex;
-  justify-content: baseline;
-  align-items: center;
-  gap: 0.5rem;
+    padding: 1rem;
+    width: 50%;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .time {
-  color: black;
-  padding: 0.5rem;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+    color: black;
+    padding: 0.5rem;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.each_course_container {
+    width: 300px;
+    height: 300px;
+}
+
+.info_details {
+    display: flex;
+    font-size: 0.5rem;
+    justify-content: space-around;
+    color: white;
+    margin-top: 15px;
+}
+
+.course_stack,
+.course_time {
+    font-size: 10px;
+}
+
+.grid_item {
+    box-shadow: rgb(208 212 233 / 34%) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    height: 300px;
+    /* width: 370px; */
+    padding: 0px 0px 5px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.eachcourse_container_info {
+    margin-top: 25px;
 }
 
 @media screen and (max-width: 400px) {
-  .each {
-    max-width: 100%;
-  }
-
-  .each img {
-    max-width: 100%;
-    width: 100%;
-    margin: auto;
-  }
+    .each {
+        max-width: 100%;
+    }
+    .each img {
+        max-width: 100%;
+        width: 100%;
+        margin: auto;
+    }
 }

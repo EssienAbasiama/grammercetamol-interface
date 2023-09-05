@@ -1,142 +1,183 @@
 li {
-  list-style: none;
+    list-style: none;
 }
 
 .footerall {
-  max-width: 100%;
-  padding: 2%;
-  display: flex;
-  color: white;
-  text-transform: capitalize;
-  line-height: 1.4rem;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1rem;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: stretch;
-  gap: 2%;
+    max-width: 100%;
+    padding: 2%;
+    display: flex;
+    color: white;
+    text-transform: capitalize;
+    line-height: 1.4rem;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    gap: 2%;
 }
 
 .footer3 {
-  flex-basis: 30vw;
-  flex-shrink: 1;
+    flex-basis: 30vw;
+    flex-shrink: 1;
 }
 
 .footer3:nth-child(1) {
-  order: 1;
+    order: 1;
+    display: flex;
+    /* align-items: center; */
+    margin-top: 50px;
 }
+
 .footer3:nth-child(2) {
-  order: 2;
+    order: 2;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
 }
+
 .footer3:nth-child(3) {
-  order: 3;
+    order: 3;
+    height: 330px;
+    background: #606060;
+    display: flex;
+    justify-content: center;
 }
 
 .d1 {
-  height: inherit;
-  margin-top: 6%;
-  /* width: 50%; */
+    height: inherit;
+    /* margin-top: 6%; */
+    /* width: 50%; */
 }
+
 .footerlogo {
-  width: auto;
-  margin-bottom: 2%;
+    width: auto;
+    margin-bottom: 2%;
 }
 
 .footerlogo img {
-  height: 8vh;
-  object-fit: cover;
+    height: 8vh;
+    object-fit: cover;
 }
 
 .intro {
-  margin: 2%;
+    margin: 2%;
 }
 
 .d2 {
-  margin-top: 6%;
-  text-align: center;
+    margin-top: 6%;
+    text-align: left;
 }
 
 .d2 h2 {
-  padding-bottom: 4%;
+    padding-bottom: 4%;
 }
 
 .d2 a {
-  margin-bottom: 20px;
-  display: block;
-  text-decoration: none;
-  color: inherit;
+    margin-top: 30px;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    font-size: 16px;
 }
 
 .contacts {
-  padding: 3%;
+    padding: 3%;
 }
 
 .contacts_icons {
-  font-size: 2rem;
-  display: flex;
-  gap: 5%;
+    font-size: 2rem;
+    display: flex;
+    gap: 5%;
 }
+
 .contacts_icons a {
-  color: inherit;
+    color: inherit;
 }
 
 .d3 {
-  padding-top: 3%;
-  text-align: center;
+    padding-top: 30px;
+    text-align: center;
 }
 
 .community {
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 .form {
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  padding-bottom: 2rem;
+    margin-top: 50px;
 }
 
 .form label,
 .form input {
-  display: block;
+    display: block;
 }
 
 .form label {
-  font-weight: bold;
-  flex: 1;
-  margin-bottom: 0.5rem;
-  color: blue;
+    font-weight: bold;
+    flex: 1;
+    margin-bottom: 0.5rem;
+    color: blue;
 }
 
 .form input {
-  flex: 2;
-  width: 50%;
-  font: inherit;
-  margin: auto;
-  border-radius: 6px;
-  border: 1px solid rgb(223, 65, 65);
+    flex: 2;
+    font: inherit;
+    margin: auto;
+    border-radius: 6px;
+    border: 1px solid rgb(38, 38, 38);
+    width: 250px;
+    height: 60px;
+    background-color: rgb(38, 38, 38);
+    padding: 10px
+}
+
+.form input::placeholder {
+    font-size: 15px;
+    text-align: center;
+}
+
+.footet_sub_title {
+    font-size: 14px;
+}
+
+.d3_h2 {
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.footer_email {}
+
+.button {
+    border: #ff3737;
+    background-color: #f00;
+    /* padding: 0.8rem 3rem; */
+    width: 250px;
+    height: 60px;
+    margin-top: 30px;
+    color: black;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 650px) {
-  .footerall {
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .footer3 {
-    width: 100%;
-  }
-  .footer3:nth-child(2) {
-    order: 3;
-  }
-
-  .d2 a {
-    display: inline-flex;
-    margin: 7px;
-  }
-  .footer3:nth-child(3) {
-    order: 2;
-  }
+    .footerall {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .footer3 {
+        width: 100%;
+    }
+    .footer3:nth-child(2) {
+        order: 3;
+    }
+    .d2 a {
+        display: inline-flex;
+        margin: 7px;
+    }
+    .footer3:nth-child(3) {
+        order: 2;
+    }
 }

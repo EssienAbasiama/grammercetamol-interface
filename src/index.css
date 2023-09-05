@@ -1,26 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat&family=Playfair:ital,wght@0,600;1,400&display=swap');
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  word-wrap: break-word;
-  width: 100% !important;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    word-wrap: break-word;
+    width: 100% !important;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    /* font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace; */
 }
 
 * {
-  box-sizing: border-box;
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
-  color: rgb(255, 255, 255);
-  list-style: none;
-  font-size: 1.1rem;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    color: rgb(255, 255, 255);
+    list-style: none;
+    font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
 }
+
+
+/* @font-face {
+    font-family: Gumela;
+    src: url('./fonts/*');
+    src: local('Gumela'), url(./fonts/Gumela.otf) format('otf');
+} */
+
+* {
+    /* font-family: "Gumela";
+    font-weight: normal; */
+    /* font-size: 20px; */
+}
+
+
+/* body {
+    margin: 0;
+} */

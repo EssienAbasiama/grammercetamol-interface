@@ -87,8 +87,12 @@ const Login = () => {
             <Link to={process.env.React_App_Home}>
               <img src={Logo} alt="" className={styles.logo} />
             </Link>
-
-            <h3 className={styles.h3}>Registration Form</h3>
+            <div>
+              <p>SignIn</p>
+              <p>SignIn to Continue Your Application</p>
+            </div>
+            <h3 className={styles.h3}>SignIn</h3>
+            <h4 className={styles.h4}>SignIn to Continue Your Application</h4>
             {Error && <p>Username or password incorrect!</p>}
             <Form submit={submitHandler}>
               <Input

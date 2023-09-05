@@ -29,7 +29,7 @@ const Footer = (props) => {
               <img src={Logo} alt="" />
             </div>
             <div className={style.intro}>
-              <h3>
+              <h3 className={style.footet_sub_title}>
                 Welcome to our english academy where we help you stand out with
                 stunning diction
               </h3>
@@ -65,15 +65,15 @@ const Footer = (props) => {
         <Card className={style.footer3}>
           <div className={style.d3}>
             <div className={style.community}>
-              <h2>join our community</h2>
+              <h2 className={style.d3_h2}>join our community</h2>
             </div>
-            <p>Be the first to know about new lessons and post</p>
+            <p >Be the first to know about new lessons and post</p>
             <form onSubmit={addMail}>
               <div className={style.form}>
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" ref={emailRef} />
+                <input type="email" id="email" ref={emailRef} placeholder="Email Address"/>
+                {/* <Button className={style.button}>Sign Me In</Button> */}
               </div>
-              <Button>sign me up</Button>
+              <Button className={style.button}>SIGN ME UP</Button>
             </form>
           </div>
         </Card>
