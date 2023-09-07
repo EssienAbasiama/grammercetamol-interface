@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Montserrat&family=Playfair:ital,wght@0,600;1,400&display=swap');
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     padding: 0;

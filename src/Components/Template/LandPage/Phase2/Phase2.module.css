@@ -46,3 +46,27 @@
 .course_contents::-webkit-scrollbar {
     display: none;
 }
+
+@media(max-width:641px) {
+    .course {
+        margin-top: 200px;
+    }
+}
+
+@media(max-width:540px) {
+    .course {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 450px) {
+    .course_contents {
+        padding: 0rem 2rem;
+    }
+}
+
+@media(max-width: 400px) {
+    .course {
+        margin-top: 0px;
+    }
+}
