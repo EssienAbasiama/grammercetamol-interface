@@ -15,14 +15,14 @@ const EachCourse = (props) => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            width: "400px",
+            width: "inherit",
             height: "200px",
             position:"relative",
             borderRadius: "10px 10px 0px 0px",
           }}
         ></div>
         <div className={styles.eachcourse_container_info}>
-          <div>Technical English for Beginners</div>
+          <div className={styles.each_course_title}>Technical English for Beginners</div>
           <div className={styles.info_details}>
             <p className={styles.course_stack}>12 Lessons</p>
             <p className={styles.course_time}>2hrs 45min</p>

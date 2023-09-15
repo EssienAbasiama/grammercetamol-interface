@@ -33,3 +33,24 @@
     margin-top: 120px;
     /* Adjust the gap between boxes as needed */
 }
+
+@media(max-width:951px) {
+    .grid_container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .grid_item {
+        height: 300px
+    }
+    .each_course_title {
+        font-size: 1.1rem;
+    }
+    .eachcourse_container_info {
+        margin-top: 20px;
+    }
+}
+
+@media(max-width: 615px) {
+    .grid_container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

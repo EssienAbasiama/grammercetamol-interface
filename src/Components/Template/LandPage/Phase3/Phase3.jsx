@@ -46,19 +46,13 @@ const Phase3 = (props) => {
               </div> */}
               {/* style.other_courses_contents_img */}
               <div
-                    // className={}
+                    className={style.image_container}
                     style={{
                       backgroundImage: `url(${courses.images})`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      width: "370px",
-                      height: "200px",
-                      borderRadius: "10px",
                     }}
                   ></div>
               <div className={style.other_courses_contents_details}>
-                <p>what is going to happen now</p>
+                <p className={style.other_courses_contents_details_contents}>what is going to happen now</p>
               </div>
             </div>
           ))}

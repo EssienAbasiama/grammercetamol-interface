@@ -39,12 +39,6 @@ const Phase2 = () => {
                     className={style.course_image}
                     style={{
                       backgroundImage: `url(${course.images})`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      width: "400px",
-                      height: "200px",
-                      borderRadius: "10px",
                     }}
                   ></div>
               <div className={style.course_entails}>

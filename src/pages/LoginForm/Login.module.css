@@ -117,11 +117,77 @@ input {
     }
 }
 
-@media screen and (max-width: 850px) {
+
+/* @media screen and (max-width: 850px) {
     .form__ {
         display: none;
     }
     .form {
         width: 100%;
+    }
+} */
+
+@media(max-width: 974px) {
+    .form {
+        width: 100%;
+        padding: 0px 50px 20px 50px;
+    }
+    .form__ {
+        width: 30%;
+        border-radius: 0 10px 10px 0;
+    }
+    .microphone {
+        display: none;
+    }
+}
+
+@media(max-width:843px) {
+    .form__ {
+        width: 30%;
+        border-radius: 0 10px 10px 0;
+    }
+}
+
+@media(max-width: 629px) {
+    .form__ {
+        width: 20%;
+    }
+}
+
+@media(max-width: 587px) {
+    .form__ {
+        width: 15%;
+        border-radius: 0 10px 10px 0;
+    }
+}
+
+@media(max-width: 544px) {
+    .form__ {
+        width: 10%;
+    }
+}
+
+@media(max-width: 521px) {
+    .form__ {
+        width: 5%;
+    }
+}
+
+@media(max-width: 500px) {
+    .h4 {
+        margin-top: 0.8rem;
+        font-size: 10px;
+    }
+}
+
+@media(max-width: 472px) {
+    .h3 {
+        /* margin: 2rem; */
+        color: black;
+        margin-top: 40px;
+        font-size: 25px
+    }
+    .form {
+        padding: 0px 30px 20px 30px;
     }
 }

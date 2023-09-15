@@ -135,19 +135,27 @@ textarea {
     font-size: 10px;
 }
 
-@media screen and (max-width: 400px) {
-    .contact-details a {
-        font-size: 0.9rem;
+@media(max-width: 1240px) {
+    .microphone {
+        right: -5px;
     }
 }
 
-@media screen and (max-width: 520px) {
-    .contacts {
-        padding: 0.5rem;
+@media(max-width: 1150px) {
+    .microphone {
+        right: -15px;
+        top: 110px
     }
 }
 
-@media screen and (max-width: 690px) {
+@media(max-width: 1023px) {
+    .microphone {
+        right: -30px;
+        top: 110px;
+    }
+}
+
+@media screen and (max-width: 779px) {
     .contacts {
         flex-direction: column;
     }
@@ -159,5 +167,30 @@ textarea {
     }
     .get-message {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .contacts {
+        padding: 0.5rem;
+    }
+}
+
+@media screen and (max-width:411px) {
+    .contacts {
+        width: 100%;
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .contact-details a {
+        font-size: 0.9rem;
+    }
+}
+
+@media(max-width: 335px) {
+    .contacts {
+        padding: 1.0rem;
     }
 }
