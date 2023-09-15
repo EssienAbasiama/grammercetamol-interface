@@ -148,6 +148,7 @@
 @media(max-width:507px) {
     .grid_container {
         grid-template-columns: repeat(1, 1fr);
+        padding: 1.5rem;
     }
     .grid_item {
         height: 200px;
