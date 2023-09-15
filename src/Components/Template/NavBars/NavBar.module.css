@@ -79,6 +79,12 @@
     }
 }
 
+@media(max-width: 480px) {
+    .navitems {
+        height: 15vh;
+    }
+}
+
 @media (max-width: 450px) {
     .logo {
         padding-left: 0rem;
